@@ -1,0 +1,16 @@
+#!/bin/bash -p
+
+clear
+
+rm maven.log
+
+mvn clean install -B -q -DskipTests=true > maven.log
+
+if [ $? != 0 ];then
+  cat maven.log
+  return
+fi
+
+rm maven.log dependency-reduced-pom.xml
+
+echo;echo "ßuild Ok";echo
