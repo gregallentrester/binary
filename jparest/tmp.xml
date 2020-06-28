@@ -1,0 +1,738 @@
+
+
+https://projects.spring.io/spring-hateoas Spring HATEOAS
+https://projects.spring.io/spring-data-jpa Spring Data JPA
+
+NOTE: Spring Data REST also supports
+
+Spring Data:  /guides/gs/accessing-neo4j-data-rest
+Neo4j:        /guides/gs/accessing-gemfire-data-rest
+
+https://raw.githubusercontent.com/spring-guides/getting-started
+https://raw.githubusercontent.com/spring-guides/getting-started
+
+
+This repository is an interface and will allow you to perform various
+operations involving Person objects.
+
+It gets these operations by extending the
+https://docs.spring.io/spring-data/commons/docs/{spring_data_commons}/api/org/springframework/data/repository/PagingAndSortingRepo
+sitory.htmlPagingAndSortingRepository interface
+defined in Spring Data Commons.
+
+At runtime, Spring Data REST auto-creates an implementation of this interface.
+Then it will use the
+
+https://docs.spring.io/spring-data/rest/docs/{spring_data_rest}/api/org/springframework/data/rest/core/annotation/RepositoryRestResource.html@R
+epositoryRestResource annotation
+
+to direct Spring MVC to create RESTful endpoints at /people.
+
+
+Create a Person repository
+Next, you need to create a simple repository, as the following listing
+
+src/main/java/com/example/accessingdatarest/PersonRepository.java)
+shows:
+
+
+complete/src/main/java/com/example/accessingdatarest/PersonRepository.java
+
+
+This repository is an interface that lets you perform various operations
+involving
+Person objects. It gets these operations by extending the
+https://docs.spring.io/spring-data/commons/docs/{spring_data_commons}/ap
+i/org/springframework/data/repository/PagingAndSortingRepository.htmlP
+agingAndSortingRepository interface that is defined in
+Spring Data Commons.
+At runtime, Spring Data REST automatically creates an implementation of
+this interface.
+Then it uses the https://docs.spring.io/spring-data/rest/docs/{spring_da
+ta_rest}/api/org/springframework/data/rest/core/annotation/RepositoryRes
+tResource.html@RepositoryRestResource annotation to direct Spring MVC
+to
+create RESTful endpoints at /people.
+
+NOTE: @RepositoryRestResource is not required for a repository to be
+exported. It is
+used only to change the export details, such as using /people instead
+of the default
+value of /persons.
+Here you have also defined a custom query to retrieve a list of Person
+objects based on
+the lastName. You can see how to invoke it later in this guide.
+https://raw.githubusercontent.com/spring-guides/getting-started
+-macros/master/spring-boot-application-new-path.adoc
+Spring Boot automatically spins up Spring Data JPA to create a concrete
+implementation of
+the PersonRepository and configure it to talk to a back end in-memory
+database by using
+JPA.
+Spring Data REST builds on top of Spring MVC. It creates a collection of
+Spring MVC
+controllers, JSON converters, and other beans to provide a RESTful front
+end. These
+components link up to the Spring Data JPA backend. When you use Spring
+Boot, this is all
+autoconfigured. If you want to investigate how that works, by looking at
+the
+RepositoryRestMvcConfiguration in Spring Data REST.
+https://raw.githubusercontent.com/spring-guides/getting-started
+-macros/master/build_an_executable_jar_subhead.adoc
+https://raw.githubusercontent.com/spring-guides/getting-started
+-macros/master/build_an_executable_jar_with_both.adoc
+Logging output is displayed. The service should be up and running within
+a few seconds.
+Test the Application
+Now that the application is running, you can test it. You can use any
+REST client you
+wish. The following examples use the *nix tool, curl.
+First you want to see the top level service. The following example shows
+how to do so:
+
+
+
+curl http://localhost:8080
+{
+"_links" : {
+"people" : {
+  "href" : "http://localhost:8080/people{?page,size,sort}",
+  "templated" : true
+}
+}
+}
+
+
+The preceding example provides a first glimpse of what this server has
+to offer. There is a people link located at
+http://localhost:8080/people. It has some options, such as ?page,
+?size, and ?sort.
+NOTE: Spring Data REST uses the
+http://stateless.co/hal_specification.htmlHAL format for
+JSON output. It is flexible and offers a convenient way to supply links
+adjacent to the
+data that is served.
+
+The following example shows how to see the people records (none at
+present):
+
+
+curl http://localhost:8080/people
+{
+"_embedded" : {
+"people" :
+},
+"_links" : {
+"self" : {
+  "href" : "http://localhost:8080/people{?page,size,sort}",
+  "templated" : true
+},
+"search" : {
+  "href" : "http://localhost:8080/people/search"
+}
+},
+"page" : {
+"size" : 20,
+"totalElements" : 0,
+"totalPages" : 0,
+"number" : 0
+}
+}
+
+There are currently no elements and, hence, no pages. Time to create a
+new Person!
+The following listing shows how to do so:
+
+
+
+curl -i -H "Content-Type:application/json" -d '{"firstName": "Frodo",
+"lastName": "Baggins"}' http://localhost:8080/people
+HTTP/1.1 201 Created
+Server: Apache-Coyote/1.1
+Location: http://localhost:8080/people/1
+Content-Length: 0
+Date: Wed, 26 Feb 2014 20:26:55 GMT
+
+- -i: Ensures you can see the response message including the headers.
+The URI of the
+newly created Person is shown.
+- -H "Content-Type:application/json": Sets the content type so the
+application knows the
+payload contains a JSON object.
+- -d '{"firstName": "Frodo", "lastName": "Baggins"}': Is the data
+being sent.
+- If you are on Windows, the command above will work on
+https://docs.microsoft.com/en-us/windows/wslWSL. If you can't install
+WSL, you might need to replace the single quotes with double quotes and
+escape the existing double quotes, i.e. -d "{\"firstName\": \"Frodo\",
+\"lastName\": \"Baggins\"}".
+
+NOTE: Notice how the response to the POST operation includes a
+Location header. This contains
+the URI of the newly created resource. Spring Data REST also has two
+methods
+(RepositoryRestConfiguration.setReturnBodyOnCreate(…) and
+setReturnBodyOnUpdate(…))
+that you can use to configure the framework to immediately return the
+representation of
+the resource just created.
+RepositoryRestConfiguration.setReturnBodyForPutAndPost(…) is
+a shortcut method to enable representation responses for create and
+update operations.
+You can query for all people, as the following example shows:
+
+
+
+curl http://localhost:8080/people
+{
+"_links" : {
+"self" : {
+  "href" : "http://localhost:8080/people{?page,size,sort}",
+  "templated" : true
+},
+"search" : {
+  "href" : "http://localhost:8080/people/search"
+}
+},
+"_embedded" : {
+"people" :  {
+  "firstName" : "Frodo",
+  "lastName" : "Baggins",
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/people/1"
+    }
+  }
+}
+},
+"page" : {
+"size" : 20,
+"totalElements" : 1,
+"totalPages" : 1,
+"number" : 0
+}
+}
+
+
+The people object contains a list that includes Frodo. Notice how it
+includes a
+self link. Spring Data REST also uses
+https://www.atteo.org/2011/12/12/Evo-Inflector.htmlEvo Inflector to
+pluralize the name of
+the entity for groupings.
+You can query directly for the individual record, as follows:
+
+
+
+curl http://localhost:8080/people/1
+{
+"firstName" : "Frodo",
+"lastName" : "Baggins",
+"_links" : {
+"self" : {
+  "href" : "http://localhost:8080/people/1"
+}
+}
+}
+
+
+NOTE:
+This might appear to be purely web-based. However, behind the scenes, there is
+an H2 relational database. In production, you would probably use a real one,
+such as PostgreSQL.
+
+TIP: In this guide, there is only one domain object. With a more complex
+system, where domain objects are related to each other, Spring Data REST
+renders additional links to help navigate to connected records.
+You can find all the custom queries, as shown in the following example:
+
+
+
+curl http://localhost:8080/people/search
+{
+"_links" : {
+"findByLastName" : {
+  "href" : "http://localhost:8080/people/search/findByLastName{?name
+  }",
+  "templated" : true
+}
+}
+}
+
+
+You can see the URL for the query, including the HTTP query parameter, name.
+Note that this matches the @Param("name") annotation embedded in the interface.
+The following example shows how to use the findByLastName query:
+
+
+
+curl http://localhost:8080/people/search/findByLastName?name=Baggins
+{
+"_embedded" : {
+"persons" :  {
+  "firstName" : "Frodo",
+  "lastName" : "Baggins",
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/people/1"
+    }
+  }
+}
+}
+}
+
+
+Because you defined it to return List<Person> in the code, it returns
+all of the results.
+If you had defined it to return only Person, it picks one of
+the Person objects to return.
+Since this can be unpredictable, you probably do not want to do that
+for queries that can return multiple entries.
+
+You can also issue PUT, PATCH, and DELETE REST calls to replace,
+update, or delete existing records (respectively). The following
+example uses a PUT call:
+
+curl -X PUT \
+-H "Content-Type:application/json" \
+-d '{"firstName":
+"Bilbo", "lastName": "Baggins"}' http://localhost:8080/people/1
+
+curl http://localhost:8080/people/1
+{
+"firstName" : "Bilbo",
+"lastName" : "Baggins",
+"_links" : {
+"self" : {
+  "href" : "http://localhost:8080/people/1"
+}
+}
+}
+
+
+The following example uses a PATCH call:
+
+curl -X PATCH \
+-H "Content-Type:application/json" \
+-d '{"firstName":"Bilbo Jr."}' http://localhost:8080/people/1
+
+curl http://localhost:8080/people/1
+{
+"firstName" : "Bilbo Jr.",
+"lastName" : "Baggins",
+"_links" : {
+"self" : {
+  "href" : "http://localhost:8080/people/1"
+}
+}
+}
+
+
+NOTE: PUT replaces an entire record. Fields not supplied are replaced
+with null. You can use PATCH to update a subset of items.
+You can also delete records, as the following example shows:
+
+
+
+curl -X DELETE http://localhost:8080/people/1
+
+curl http://localhost:8080/people
+{
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/people{?page,size,sort}",
+      "templated" : true
+    },
+    "search" : {
+    "href" : "http://localhost:8080/people/search"
+  }
+},
+    "page" : {
+    "size" : 20,
+    "totalElements" : 0,
+    "totalPages" : 0,
+    "number" : 0
+  }
+}
+
+
+The following guides may also be helpful:
+https://spring.io/guides/gs/rest-hateoas/Building
+
+RESTful Web Service
+https://spring.io/guides/gs/accessing-gemfire-data-rest/Accessing
+
+GemFire Data with REST
+https://spring.io/guides/gs/accessing-mongodb-data-rest/Accessing
+
+MongoDB Data with REST
+https://spring.io/guides/gs/accessing-data-mysql/Accessing d
+
+MySQL
+https://spring.io/guides/gs/accessing-neo4j-data-rest/Accessing
+
+Data with REST
+https://spring.io/guides/gs/consuming-rest/Consuming
+
+https://spring.io/guides/gs/securing-web/Securing a Web Application
+https://spring.io/guides/tutorials/bookmarks/Building REST services with Spring
+https://spring.io/guides/gs/spring-boot/Building an Application with
+
+Spring Boot
+https://spring.io/guides/gs/testing-restdocs/Creating API
+
+Documentation with Restdocs
+https://spring.io/guides/gs/rest-service-cors/Enabling Cross Origin
+
+Requests for a RESTful Web Service
+https://raw.githubusercontent.com/spring-guides/getting-started
+
+:Controller: https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/stereotype/Controller.html
+:DispatcherServlet: https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
+:SpringApplication: https://docs.spring.io/spring-boot/docs/{spring_boot_version}/api/org/springframework/boot/SpringApplication.html
+:ResponseBody: https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/web/bind/annotation/ResponseBody.html
+
+This guide walks you through the process of creating an application that accesses
+relational JPA data through a link:/guides/gs/rest-hateoashypermedia-based
+
+link:/understanding/RESTRESTful front end.
+What You Will Build
+You will build a Spring application that lets you create and retrieve Person objects
+stored in a database by using Spring Data REST. Spring Data REST takes the features of
+https://projects.spring.io/spring-hateoasSpring HATEOAS and
+https://projects.spring.io/spring-data-jpaSpring Data JPA and automatically combines them
+together.
+
+NOTE: Spring Data REST also supports link:/guides/gs/accessing-neo4j-data-restSpring Data
+Neo4j, link:/guides/gs/accessing-gemfire-data-restSpring Data Gemfire, and
+link:/guides/gs/accessing-mongodb-data-restSpring Data MongoDB as backend data stores,
+but those are not part of this guide.
+What You Need
+:java_version: 1.8
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc
+
+The Person object has a first name and a last name. (There is also an ID object
+that is configured to be automatically generated, so you need not deal with that.
+This repository is an interface and will allow you to perform various operations
+involving Person objects. It gets these operations by extending the
+ https://docs.spring.io/spring-data/commons/docs/{spring_data_commons}/api/org/springframework/data/repository/PagingAndSortingRepository.htmlPagingAndSortingRepository interface defined in Spring Data Commons.
+
+At runtime, Spring Data REST will create an implementation of this interface
+automatically.
+
+Then it will use the https://docs.spring.io/spring-data/rest/docs/{spring_data_rest}/api/org/springframework/data/rest/core/annotation/RepositoryRestResource.html@RepositoryRestResource annotation to direct Spring MVC to create RESTful endpoints at /people.
+Create a Person repository
+Next, you need to create a simple repository, as the following listing
+src/main/java/com/example/accessingdatarest/PersonRepository.java) shows:
+
+complete/src/main/java/com/example/accessingdatarest/PersonRepository.java
+
+This repository is an interface that lets you perform various operations involving
+Person objects. It gets these operations by extending the
+https://docs.spring.io/spring-data/commons/docs/{spring_data_commons}/api/org/springframework/data/repository/PagingAndSortingRepository.htmlPagingAndSortingRepository interface that is defined in
+Spring Data Commons.
+
+At runtime, Spring Data REST automatically creates an implementation of this interface.
+Then it uses the https://docs.spring.io/spring-data/rest/docs/{spring_data_rest}/api/org/springframework/data/rest/core/annotation/RepositoryRestResource.html@RepositoryRestResource annotation to direct Spring MVC to
+create RESTful endpoints at /people.
+
+NOTE: @RepositoryRestResource is not required for a repository to be exported. It is
+used only to change the export details, such as using /people instead of the default
+value of /persons.
+Here you have also defined a custom query to retrieve a list of Person objects based on
+the lastName. You can see how to invoke it later in this guide.
+
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application-new-path.adoc
+
+
+Spring Boot automatically spins up Spring Data JPA to create a concrete implementation of
+the PersonRepository and configure it to talk to a back end in-memory database by using
+JPA.
+Spring Data REST builds on top of Spring MVC. It creates a collection of Spring MVC
+controllers, JSON converters, and other beans to provide a RESTful front end. These
+components link up to the Spring Data JPA backend. When you use Spring Boot, this is all
+autoconfigured. If you want to investigate how that works, by looking at the
+RepositoryRestMvcConfiguration in Spring Data REST.
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_subhead.adoc
+https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc
+Logging output is displayed. The service should be up and running within a few seconds.
+Test the Application
+Now that the application is running, you can test it. You can use any REST client you
+wish. The following examples use the *nix tool, curl.
+First you want to see the top level service. The following example shows how to do so:
+
+
+
+curl http://localhost:8080
+{
+“_links” : {
+“people” : {
+“href” : "http://localhost:8080/people{?page,size,sort}",
+“templated” : true
+}
+}
+}
+
+
+The preceding example provides a first glimpse of what this server has to offer. There is a people link located at http://localhost:8080/people. It has some options, such as ?page, ?size, and ?sort.
+NOTE: Spring Data REST uses the http://stateless.co/hal_specification.htmlHAL format for
+JSON output. It is flexible and offers a convenient way to supply links adjacent to the
+data that is served.
+The following example shows how to see the people records (none at present):
+
+
+
+curl http://localhost:8080/people
+{
+“_embedded” : {
+“people” :
+},
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people{?page,size,sort}",
+“templated” : true
+},
+“search” : {
+“href” : "http://localhost:8080/people/search"
+}
+},
+“page” : {
+“size” : 20,
+“totalElements” : 0,
+“totalPages” : 0,
+“number” : 0
+}
+}
+
+
+There are currently no elements and, hence, no pages. Time to create a new Person!
+The following listing shows how to do so:
+
+curl -i -H “Content-Type:application/json” -d ‘{“firstName”: “Frodo”, “lastName”: “Baggins”}’ http://localhost:8080/people
+HTTP/1.1 201 Created
+Server: Apache-Coyote/1.1
+Location: http://localhost:8080/people/1
+Content-Length: 0
+Date: Wed, 26 Feb 2014 20:26:55 GMT
+
+-i: Ensures you can see the response message including the headers. The URI of the
+newly created Person is shown.
+-H "Content-Type:application/json": Sets the content type so the application knows the
+payload contains a JSON object.
+-d '{"firstName": "Frodo", "lastName": "Baggins"}': Is the data being sent.
+If you are on Windows, the command above will work on https://docs.microsoft.com/en-us/windows/wslWSL.
+If you can’t install WSL, you might need to replace the single quotes with double quotes and escape the existing double quotes, i.e. -d "{\"firstName\": \"Frodo\", \"lastName\": \"Baggins\"}".
+
+NOTE: Notice how the response to the POST operation includes a Location header. This contains
+the URI of the newly created resource. Spring Data REST also has two methods
+(RepositoryRestConfiguration.setReturnBodyOnCreate(…) and setReturnBodyOnUpdate(…))
+that you can use to configure the framework to immediately return the representation of
+the resource just created. RepositoryRestConfiguration.setReturnBodyForPutAndPost(…) is
+a shortcut method to enable representation responses for create and update operations.
+You can query for all people, as the following example shows:
+
+
+
+curl http://localhost:8080/people
+{
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people{?page,size,sort}",
+“templated” : true
+},
+“search” : {
+“href” : "http://localhost:8080/people/search"
+}
+},
+“_embedded” : {
+“people” :  {
+“firstName” : “Frodo”,
+“lastName” : “Baggins”,
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people/1"
+}
+}
+}
+},
+“page” : {
+“size” : 20,
+“totalElements” : 1,
+“totalPages” : 1,
+“number” : 0
+}
+}
+
+
+The people object contains a list that includes Frodo. Notice how it includes a
+self link. Spring Data REST also uses
+https://www.atteo.org/2011/12/12/Evo-Inflector.htmlEvo Inflector to pluralize the name of
+the entity for groupings.
+You can query directly for the individual record, as follows:
+
+
+
+curl http://localhost:8080/people/1
+{
+“firstName” : “Frodo”,
+“lastName” : “Baggins”,
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people/1"
+}
+}
+}
+
+
+NOTE: This might appear to be purely web-based. However, behind the scenes, there is an H2
+relational database. In production, you would probably use a real one, such as PostgreSQL.
+
+TIP: In this guide, there is only one domain object. With a more complex system,
+where domain objects are related to each other, Spring Data REST renders additional links to help navigate to connected records.
+
+You can find all the custom queries, as shown in the following example:
+
+
+
+curl http://localhost:8080/people/search
+{
+“_links” : {
+“findByLastName” : {
+“href” : "http://localhost:8080/people/search/findByLastName{?name}",
+“templated” : true
+}
+}
+}
+
+
+You can see the URL for the query, including the HTTP query parameter, name. Note that
+this matches the @Param("name") annotation embedded in the interface.
+The following example shows how to use the findByLastName query:
+
+curl http://localhost:8080/people/search/findByLastName?name=Baggins
+{
+“_embedded” : {
+“persons” :  {
+“firstName” : “Frodo”,
+“lastName” : “Baggins”,
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people/1"
+}
+}
+}
+}
+}
+
+
+Because you defined it to return List<Person> in the code, it returns all of the
+results. If you had defined it to return only Person, it picks one of the Person
+objects to return. Since this can be unpredictable, you probably do not want to do that
+for queries that can return multiple entries.
+You can also issue PUT, PATCH, and DELETE REST calls to replace, update, or delete
+existing records (respectively). The following example uses a PUT call:
+
+curl -X PUT -H “Content-Type:application/json” -d ‘{“firstName”: “Bilbo”, “lastName”: “Baggins”}’ http://localhost:8080/people/1
+curl http://localhost:8080/people/1
+{
+“firstName” : “Bilbo”,
+“lastName” : “Baggins”,
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people/1"
+}
+}
+}
+
+
+The following example uses a PATCH call:
+
+
+
+curl -X PATCH -H “Content-Type:application/json” -d ‘{“firstName”: “Bilbo Jr.”}’ http://localhost:8080/people/1
+curl http://localhost:8080/people/1
+{
+“firstName” : “Bilbo Jr.”,
+“lastName” : “Baggins”,
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people/1"
+}
+}
+}
+
+
+NOTE: PUT replaces an entire record. Fields not supplied are replaced with null. You
+can use PATCH to update a subset of items.
+You can also delete records, as the following example shows:
+
+
+
+curl -X DELETE http://localhost:8080/people/1
+curl http://localhost:8080/people
+{
+“_links” : {
+“self” : {
+“href” : "http://localhost:8080/people{?page,size,sort}",
+“templated” : true
+},
+“search” : {
+“href” : "http://localhost:8080/people/search"
+}
+},
+“page” : {
+“size” : 20,
+“totalElements” : 0,
+“totalPages” : 0,
+“number” : 0
+}
+}
+
+
+A convenient aspect of this hypermedia-driven interface is that you can discover all the
+RESTful endpoints by using curl (or whatever REST client you like). You need not exchange
+a formal contract or interface document with your customers.
+
+Building a Hypermedia-Driven RESTful Web Service
+https://spring.io/guides/gs/rest-hateoas/
+
+Accessing GemFire Data with REST
+https://spring.io/guides/gs/accessing-gemfire-data-rest/
+
+Accessing MongoDB Data with REST
+https://spring.io/guides/gs/accessing-mongodb-data-rest/
+
+Accessing data with MySQL
+https://spring.io/guides/gs/accessing-data-mysql/
+
+Accessing Neo4j Data with REST
+https://spring.io/guides/gs/accessing-neo4j-data-rest/
+
+Consuming a RESTful Web Service
+https://spring.io/guides/gs/consuming-rest/
+
+Consuming a RESTful Web Service with AngularJS
+https://spring.io/guides/gs/consuming-rest-angularjs/
+
+Consuming a RESTful Web Service with jQuery
+https://spring.io/guides/gs/consuming-rest-jquery/
+
+Consuming a RESTful Web Service with rest.js
+https://spring.io/guides/gs/consuming-rest-restjs/
+
+Securing a Web Application
+https://spring.io/guides/gs/securing-web/
+
+Building REST services with Spring
+https://spring.io/guides/tutorials/bookmarks/
+
+Building an Application with Spring Boot
+https://spring.io/guides/gs/spring-boot/
+
+Creating API Documentation with Restdocs
+https://spring.io/guides/gs/testing-restdocs/
+
+Enabling Cross Origin Requests for a RESTful Web Service
+https://spring.io/guides/gs/rest-service-cors/
