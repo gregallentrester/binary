@@ -1,0 +1,14 @@
+mvn clean install -B
+
+# ref:
+# https://spring.io/guides/tutorials/spring-boot-oauth2/
+
+# Client ID
+# 06a335ee9cac0b9859dd
+
+# Client Secret
+# e3e0841f9d007b88020039509c5a6d82ea641162
+
+
+# Authorization callback URL
+# http://localhost:8080/login/oauth2/code/github

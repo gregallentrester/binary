@@ -1,0 +1,35 @@
+
+simple
+a home page and
+unconditional login via Spring Boot's OAuth 2.0 configuration properties
+automatically redirected to GitHub.
+
+click
+adds an explicit link that the user has to click to login.
+
+logout
+adds a logout link as well for authenticated users.
+
+twoproviders
+adds a second login provider so the user can
+choose on the home page which one to use.
+
+customerror
+adds an error message for unauthenticated users,
+and a custom authentication based on GitHub's API.
+
+All come up with a home page on http://localhost:8080
+All require that you have at least a GitHub and a Google
+account to log in and view the content.
+
+Nß:
+The apps all work on localhost:8080 because they'll use
+OAuth 2.0 clients registered with GitHub and Google for that address.
+
+To run them on a different host/port, you'll need to register your apps that way.
+
+There's no danger of leaking your credentials beyond localhost if you use the
+default values.
+
+But, be careful what you expose on the Internet; don't put your own app
+registrations in public source control.

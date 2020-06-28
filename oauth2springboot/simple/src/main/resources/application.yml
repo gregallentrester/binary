@@ -1,0 +1,22 @@
+
+spring:
+
+  main:
+    banner-mode: off
+  output:
+    ansi:
+      enabled: NEVER
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 06a335ee9cac0b9859dd
+            client-secret: e3e0841f9d007b88020039509c5a6d82ea641162
+
+
+# Client ID
+# 06a335ee9cac0b9859dd
+
+# Client Secret
+# e3e0841f9d007b88020039509c5a6d82ea641162
