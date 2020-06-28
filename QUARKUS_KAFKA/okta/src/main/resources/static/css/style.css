@@ -1,0 +1,44 @@
+
+body {
+  font-family:"Optima";
+  background-image: url("/img/linen.png");
+  background-repeat: repeat;
+}
+
+a {
+  color:#32aa32; font-size:2.0em;
+  background-color: #32aa32;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: rgba(232,232,232,0.7) 0px 3px 3px;
+  padding:5em 1.0em 2.0em 1.0em; }
+
+hr {
+  border:0;
+  height:1px;
+  width:97%;
+  margin-top:2.0em;
+  margin-bottom:1.3em;
+  background-image: -webkit-linear-gradient(left,#dedede,#32aa32,#dedede);
+  background-image: -moz-linear-gradient(left,#dedede,#32aa32,#dedede);
+  background-image: -ms-linear-gradient(left,#dedede,#32aa32,#dedede);
+  background-image: -o-linear-gradient(left,#dedede,#32aa32,#dedede); }
+
+img {
+  height:20em; width:18em; border-radius:15em;
+  margin:auto; padding:4.0em 4.4em 1.0em 2.5em; }
+
+div.crumb {
+  color:#777777;
+  font-size:0.7em;
+  position:fixed;
+  left:50%;
+  bottom:20px;
+  transform:translate(-50%, -50%);
+  margin: 0 auto; }
+
+ul {
+  list-style-type: none;
+}
