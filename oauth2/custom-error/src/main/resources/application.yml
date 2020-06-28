@@ -1,0 +1,16 @@
+spring:
+  main:
+    banner-mode: off
+  output:
+    ansi:
+      enabled: NEVER
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: 6cc207fa7367ea44eff8
+            client-secret: dd4679fa413662349c125112174ead1bfbfe81dc
+          google:
+            client-id: your-google-client-id
+            client-secret: your-google-client-secret
