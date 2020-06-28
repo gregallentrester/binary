@@ -1,0 +1,3 @@
+#!/bin/bash -p
+
+docker service ls --format 'table {{.Name}}\t{{.Replicas}}\t{{.Ports}}'
