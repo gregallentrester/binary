@@ -1,0 +1,3 @@
+ansible -m setup hostname
+
+ansible-inventory --list --yaml

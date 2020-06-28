@@ -1,0 +1,8 @@
+#!/bin/bash -p
+
+export ANSIBLE_NOCOWS=1
+export ANSIBLE_NOCOLOR=true
+
+source .venv/bin/activate
+
+python -m pip install -U ansible

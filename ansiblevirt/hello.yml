@@ -1,0 +1,9 @@
+---
+- name: File copy example
+  hosts: 127.0.0.1
+  tasks:
+    - name: Copy a file called '/tmp/testfile.txt' with the content 'hello world'.
+      copy:
+        content: Hi
+        # src:  /tmp/testfile2.txt
+        dest: /tmp/testfile.txt

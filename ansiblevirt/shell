@@ -1,0 +1,8 @@
+# Run against a local server
+ansible -i ./hosts local --connection=local -b --become-user=root \
+    -m shell -a 'apt-get install nginx'
+
+# Run against a remote server
+ansible -i ./hosts remote -b --become-user=root all \
+    -m shell -a 'apt-get install nginx'
+
