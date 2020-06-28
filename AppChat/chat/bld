@@ -1,0 +1,18 @@
+#!/bin/bash -p
+
+clear
+export PROMPT_COMMAND='echo -ne "\033]0;  bld  \007"'
+
+args=("$@")
+ELEMENTS=${#args[@]}
+
+echo
+echo
+echo  Incoming ARG Count:  ${#args[@]}
+echo
+echo $@
+echo
+echo    ...
+
+mvn clean install -B
+

@@ -1,0 +1,7 @@
+#!/bin/bash -p
+
+cd ./target/classes
+
+java net.greg.examples.chat.client.Client
+
+cd -
