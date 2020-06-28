@@ -1,0 +1,3 @@
+#!/bin/bash -p
+
+mvn clean install -B

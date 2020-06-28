@@ -1,0 +1,18 @@
+service: awsjavaendpoint
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: java8
+
+package:
+  artifact: target/awsjavaendpoint.jar
+
+functions:
+  currentTime:
+    handler: net.greg.examples.serverless.Handler
+    events:
+      - http:
+          path: ping
+          method: get

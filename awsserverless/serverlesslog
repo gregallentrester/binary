@@ -1,0 +1,5 @@
+#!/bin/bash -p
+
+caption "ßash script serverlesslog() - serverless invoke --function currentTime --log"
+
+serverless invoke --function currentTime --log
