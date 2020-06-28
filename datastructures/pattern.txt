@@ -1,0 +1,47 @@
+
+
+Insert 27
+
+34 27 <= 25 false
+43 right != null: true
+16 27 <= 30 true
+17 left: null
+23 left.data: 27
+46 right.data: 30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private void populate() {
+
+  System.err.println("populate() ");
+
+  Node root = new Node(10);
+  root.left = new Node(5);
+  root.left.right = new Node(9);
+  root.left.left = new Node(3);
+  root.left.left.left = new Node(1);
+  root.left.left.right = new Node(4);
+
+  root.right = new Node(20);
+  root.right.left = new Node(15);
+  root.right.left.left = new Node(13);
+  root.right.left.right = new Node(17);
+  root.right.right = new Node(25);
+  root.right.right.right = new Node(30);
+}
