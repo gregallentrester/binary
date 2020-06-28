@@ -1,0 +1,22 @@
+#!/bin/bash -p
+
+rm topics Topics.html
+
+declare -i LCC
+declare -i LCM
+declare -i CAPACITY
+
+LCM=$(cat META | sed '/^\s*$/d' | wc -l)
+LCC=$(cat CONTENT | sed '/^\s*$/d' | wc -l)
+
+CAPACITY=$LCC+$LCM
+
+cat META CONTENT LOGIC > topics
+topics; rm topics
+
+open Topics.html
+
+if [ ! "$1" ];then
+  sleep 1
+  rm Topics.html
+fi

@@ -1,0 +1,29 @@
+
+
+Q26="<div><span>CompletionStage </span></div>"
+Q27="<hr>"
+
+Q28="<ul><li>All 12 Methods (shown below) belonging to the java.util.concurrent.CompletionStage"
+Q29="<li>Interface that have an 'async' prefix can be overloaded to accept a custom"
+Q30="<li>Executor as an additonal formal parameter."
+
+Q31="<li><br>acceptEitherAsync(CompletionStage<? extends T> other, Consumer<? super T> action)"
+Q32="<li><br>applyToEitherAsync(CompletionStage<? extends T> other, Function<? super T,U> fn)"
+
+Q33="<li><br>handleAsync(BiFunction<? super T,Throwable,? extends U> fn)"
+
+Q34="<li><br>runAfterBothAsync(CompletionStage<?> other, Runnable action)"
+Q35="<li>runAfterEitherAsync(CompletionStage<?> other, Runnable action)"
+
+Q36="<li><br>thenAcceptAsync(Consumer<? super T> action)"
+Q37="<li>thenAcceptBothAsync(CompletionStage<? extends U> other, BiConsumer<? super T,? super U> action)"
+Q38="<li>thenApplyAsync(Function<? super T,? extends U> fn)"
+Q39="<li>thenCombineAsync(CompletionStage<? extends U> other, BiFunction<? super T,? super U,? extends V> fn)"
+Q40="<li>thenComposeAsync(Function<? super T,? extends CompletionStage<U>> fn)"
+Q41="<li>thenRunAsync(Runnable action)"
+
+Q42="<li><br>whenCompleteAsync(BiConsumer<? super T,? super Throwable> action)"
+
+Q43="<hr>"
+
+Q44="<div><img src='tq.jpg'/></div>"
