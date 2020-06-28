@@ -1,0 +1,12 @@
+
+spring:
+  output:
+    ansi:
+      enabled: NEVER
+
+okta:
+  oauth2:
+    issuer: https://dev-851740.okta.com/oauth2/default
+    client-id: 0oacg0qofK3OiqyaW4x6
+    client-secret: ZwW8s8FzD9YnBAdRfsHfxOlY8cxRVEZmXwibjGvi
+    scopes: openid email profile custom
