@@ -1,0 +1,19 @@
+#!/bin/bash -p
+
+clear
+export PROMPT_COMMAND='echo -ne "\033]0;  $(ipconfig getifaddr en0) - bld  \007"'
+
+rm maven.log dependency-reduced-pom.xml
+
+
+mvn clean install -B -q -DskipTests=true > maven.log
+
+
+if [ $? != 0 ];then
+  cat maven.log
+  return
+fi
+
+rm maven.log dependency-reduced-pom.xml
+
+echo;echo "ßuild Ok";echo
