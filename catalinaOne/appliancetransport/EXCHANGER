@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+rm -f /tmp/TOKEN
+
+
+cd /tmp
+touch TOKEN
+printf "   Created  /tmp/TOKEN ... \n"
+
+
+sleep 5
+
+
+rm -f /tmp/TOKEN
+printf "   Removed  /tmp/TOKEN ... \n"
+
+
+cd /opt/catalinaOne/appliancetransport
+printf "\n   locale: "
+pwd
+
+
+printf "$1"
+
+
+
+

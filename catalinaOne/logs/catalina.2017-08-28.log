@@ -1,0 +1,434 @@
+28-Aug-2017 12:46:19.000 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+28-Aug-2017 12:46:19.001 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 12:46:19.005 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 12:46:19.056 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 12:46:19.108 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+28-Aug-2017 12:46:19.117 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'rest-servlet': startup date [Sun Aug 27 14:39:49 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 12:46:19.119 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Sun Aug 27 14:39:48 CDT 2017]; root of context hierarchy
+28-Aug-2017 12:46:19.128 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'rest-servlet': startup date [Sun Aug 27 14:39:50 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 12:46:19.130 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Sun Aug 27 14:39:50 CDT 2017]; root of context hierarchy
+28-Aug-2017 12:46:19.137 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 12:46:19.138 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 12:46:19.139 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 12:46:19.139 INFO [main] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [net.greg.examples.CatalinaExecutor@48fa0f47] after stop() had already been called. The second call will be ignored.
+28-Aug-2017 12:46:19.139 SEVERE [main] org.apache.catalina.startup.Catalina.stop Catalina.stop
+ org.apache.catalina.LifecycleException: Failed to stop component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+Caused by: org.apache.catalina.LifecycleException: An invalid Lifecycle transition was attempted ([after_stop]) for component [net.greg.examples.CatalinaExecutor@48fa0f47] in state [STOPPING_PREP]
+	at org.apache.catalina.util.LifecycleBase.invalidTransition(LifecycleBase.java:409)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:249)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:533)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 10 more
+
+28-Aug-2017 12:46:19.140 INFO [Thread-6] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.util.concurrent.ExecutorService]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.util.concurrent.ExecutorService]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1355)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1341)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at com.veritas.appliance.resiliency.rest.webservice.WorkerLauncher$1.run(WorkerLauncher.java:128)
+
+28-Aug-2017 12:46:28.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.6
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_92-b14
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/catalinaOne
+28-Aug-2017 12:46:28.755 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/catalinaOne
+28-Aug-2017 12:46:28.756 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/catalinaOne/conf/logging.properties
+28-Aug-2017 12:46:28.756 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Aug-2017 12:46:28.756 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms4096m
+28-Aug-2017 12:46:28.756 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx4096m
+28-Aug-2017 12:46:28.756 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+28-Aug-2017 12:46:28.756 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/opt/catalinaOne/endorsed
+28-Aug-2017 12:46:28.757 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/catalinaOne
+28-Aug-2017 12:46:28.757 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/catalinaOne
+28-Aug-2017 12:46:28.757 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/catalinaOne/temp
+28-Aug-2017 12:46:28.757 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/greg/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+28-Aug-2017 12:46:28.867 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 12:46:28.890 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 12:46:28.892 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 12:46:29.341 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 12:46:29.341 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 12:46:29.343 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 12:46:29.343 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 859 ms
+28-Aug-2017 12:46:29.362 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+28-Aug-2017 12:46:29.362 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+28-Aug-2017 12:46:29.386 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /opt/catalinaOne/webapps/encycbrit.war
+28-Aug-2017 12:46:30.081 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 12:46:30.116 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+28-Aug-2017 12:46:30.181 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Mon Aug 28 12:46:30 CDT 2017]; root of context hierarchy
+28-Aug-2017 12:46:30.210 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 12:46:30.670 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 12:46:30.671 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 12:46:30.671 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 12:46:30.772 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 12:46:30 CDT 2017]; root of context hierarchy
+28-Aug-2017 12:46:30.803 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 12:46:30 CDT 2017]; root of context hierarchy
+28-Aug-2017 12:46:30.850 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 734 ms
+28-Aug-2017 12:46:30.866 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization started
+28-Aug-2017 12:46:30.869 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 12:46:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 12:46:30.870 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 12:46:30.915 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 12:46:30.916 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 12:46:30.916 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 12:46:30.924 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 12:46:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 12:46:30.930 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 12:46:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 12:46:30.968 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization completed in 102 ms
+28-Aug-2017 12:46:30.977 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /opt/catalinaOne/webapps/encycbrit.war has finished in 1,591 ms
+28-Aug-2017 12:46:30.978 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/docs
+28-Aug-2017 12:46:30.996 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 12:46:30.997 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/docs has finished in 19 ms
+28-Aug-2017 12:46:30.997 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/examples
+28-Aug-2017 12:46:31.476 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 12:46:31.501 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/examples has finished in 503 ms
+28-Aug-2017 12:46:31.501 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/host-manager
+28-Aug-2017 12:46:31.522 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 12:46:31.524 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/host-manager has finished in 23 ms
+28-Aug-2017 12:46:31.524 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/manager
+28-Aug-2017 12:46:31.546 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 12:46:31.547 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/manager has finished in 23 ms
+28-Aug-2017 12:46:31.547 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/ROOT
+28-Aug-2017 12:46:31.561 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 12:46:31.562 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/ROOT has finished in 15 ms
+28-Aug-2017 12:46:31.565 WARNING [main] org.apache.catalina.mapper.MapperListener.findDefaultHost Unknown default host [localhost1] for service [StandardService[Catalina]]
+28-Aug-2017 12:46:31.566 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 12:46:31.568 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 12:46:31.568 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 12:46:31.569 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2225 ms
+28-Aug-2017 13:16:21.887 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+28-Aug-2017 13:16:21.888 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 13:16:21.942 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 13:16:21.992 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 13:16:22.048 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+28-Aug-2017 13:16:22.056 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 12:46:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 13:16:22.058 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Mon Aug 28 12:46:30 CDT 2017]; root of context hierarchy
+28-Aug-2017 13:16:22.068 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 13:16:22.072 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 13:16:22.072 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 13:16:22.073 INFO [main] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [net.greg.examples.CatalinaExecutor@48fa0f47] after stop() had already been called. The second call will be ignored.
+28-Aug-2017 13:16:22.073 SEVERE [main] org.apache.catalina.startup.Catalina.stop Catalina.stop
+ org.apache.catalina.LifecycleException: Failed to stop component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+Caused by: org.apache.catalina.LifecycleException: An invalid Lifecycle transition was attempted ([after_stop]) for component [net.greg.examples.CatalinaExecutor@48fa0f47] in state [STOPPING_PREP]
+	at org.apache.catalina.util.LifecycleBase.invalidTransition(LifecycleBase.java:409)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:249)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:533)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 10 more
+
+28-Aug-2017 13:16:28.456 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+28-Aug-2017 13:16:28.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+28-Aug-2017 13:16:28.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+28-Aug-2017 13:16:28.457 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+28-Aug-2017 13:16:28.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.6
+28-Aug-2017 13:16:28.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+28-Aug-2017 13:16:28.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre
+28-Aug-2017 13:16:28.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_92-b14
+28-Aug-2017 13:16:28.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+28-Aug-2017 13:16:28.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/catalinaOne
+28-Aug-2017 13:16:28.458 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/catalinaOne
+28-Aug-2017 13:16:28.459 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/catalinaOne/conf/logging.properties
+28-Aug-2017 13:16:28.459 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms4096m
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx4096m
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/opt/catalinaOne/endorsed
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/catalinaOne
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/catalinaOne
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/catalinaOne/temp
+28-Aug-2017 13:16:28.460 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/greg/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+28-Aug-2017 13:16:28.567 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 13:16:28.587 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 13:16:28.589 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 13:16:29.032 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 13:16:29.033 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 13:16:29.034 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 13:16:29.035 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 860 ms
+28-Aug-2017 13:16:29.049 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+28-Aug-2017 13:16:29.049 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+28-Aug-2017 13:16:29.073 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /opt/catalinaOne/webapps/encycbrit.war
+28-Aug-2017 13:16:29.769 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 13:16:29.802 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+28-Aug-2017 13:16:29.868 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Mon Aug 28 13:16:29 CDT 2017]; root of context hierarchy
+28-Aug-2017 13:16:29.897 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 13:16:30.343 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 13:16:30.344 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 13:16:30.344 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 13:16:30.437 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 13:16:29 CDT 2017]; root of context hierarchy
+28-Aug-2017 13:16:30.466 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 13:16:29 CDT 2017]; root of context hierarchy
+28-Aug-2017 13:16:30.513 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 711 ms
+28-Aug-2017 13:16:30.527 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization started
+28-Aug-2017 13:16:30.530 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 13:16:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 13:16:30.530 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 13:16:30.573 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 13:16:30.573 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 13:16:30.574 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 13:16:30.585 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 13:16:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 13:16:30.591 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 13:16:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 13:16:30.634 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization completed in 107 ms
+28-Aug-2017 13:16:30.644 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /opt/catalinaOne/webapps/encycbrit.war has finished in 1,570 ms
+28-Aug-2017 13:16:30.644 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/docs
+28-Aug-2017 13:16:30.659 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 13:16:30.660 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/docs has finished in 16 ms
+28-Aug-2017 13:16:30.660 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/examples
+28-Aug-2017 13:16:30.765 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 13:16:30.793 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/examples has finished in 132 ms
+28-Aug-2017 13:16:30.793 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/host-manager
+28-Aug-2017 13:16:30.809 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 13:16:30.811 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/host-manager has finished in 18 ms
+28-Aug-2017 13:16:30.811 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/manager
+28-Aug-2017 13:16:30.825 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 13:16:30.826 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/manager has finished in 15 ms
+28-Aug-2017 13:16:30.826 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/ROOT
+28-Aug-2017 13:16:30.837 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 13:16:30.838 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/ROOT has finished in 12 ms
+28-Aug-2017 13:16:30.841 WARNING [main] org.apache.catalina.mapper.MapperListener.findDefaultHost Unknown default host [localhost1] for service [StandardService[Catalina]]
+28-Aug-2017 13:16:30.843 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 13:16:30.844 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 13:16:30.845 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 13:16:30.845 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1810 ms
+28-Aug-2017 17:16:31.737 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+28-Aug-2017 17:16:31.738 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:16:31.741 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:16:31.794 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:16:31.849 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+28-Aug-2017 17:16:31.858 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 13:16:30 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:16:31.860 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Mon Aug 28 13:16:29 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:16:31.873 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:16:31.874 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:16:31.875 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:16:31.875 INFO [main] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [net.greg.examples.CatalinaExecutor@48fa0f47] after stop() had already been called. The second call will be ignored.
+28-Aug-2017 17:16:31.875 SEVERE [main] org.apache.catalina.startup.Catalina.stop Catalina.stop
+ org.apache.catalina.LifecycleException: Failed to stop component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+Caused by: org.apache.catalina.LifecycleException: An invalid Lifecycle transition was attempted ([after_stop]) for component [net.greg.examples.CatalinaExecutor@48fa0f47] in state [STOPPING_PREP]
+	at org.apache.catalina.util.LifecycleBase.invalidTransition(LifecycleBase.java:409)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:249)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:533)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 10 more
+
+28-Aug-2017 17:16:43.838 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+28-Aug-2017 17:16:43.838 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.6
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_92-b14
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/catalinaOne
+28-Aug-2017 17:16:43.839 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/catalinaOne
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/catalinaOne/conf/logging.properties
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms4096m
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx4096m
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/opt/catalinaOne/endorsed
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/catalinaOne
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/catalinaOne
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/catalinaOne/temp
+28-Aug-2017 17:16:43.840 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/greg/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+28-Aug-2017 17:16:43.953 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:16:43.974 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 17:16:43.976 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:16:44.428 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 17:16:44.429 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:16:44.430 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 17:16:44.431 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 870 ms
+28-Aug-2017 17:16:44.447 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+28-Aug-2017 17:16:44.447 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+28-Aug-2017 17:16:44.472 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /opt/catalinaOne/webapps/encycbrit.war
+28-Aug-2017 17:16:45.177 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:16:45.212 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+28-Aug-2017 17:16:45.279 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Mon Aug 28 17:16:45 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:16:45.310 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 17:16:45.774 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 17:16:45.775 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 17:16:45.775 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 17:16:45.878 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 17:16:45 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:16:45.910 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 17:16:45 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:16:45.961 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 749 ms
+28-Aug-2017 17:16:45.975 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization started
+28-Aug-2017 17:16:45.978 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 17:16:45 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:16:45.978 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 17:16:46.029 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 17:16:46.029 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 17:16:46.029 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 17:16:46.042 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 17:16:45 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:16:46.050 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 17:16:45 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:16:46.089 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization completed in 114 ms
+28-Aug-2017 17:16:46.100 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /opt/catalinaOne/webapps/encycbrit.war has finished in 1,627 ms
+28-Aug-2017 17:16:46.100 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/docs
+28-Aug-2017 17:16:46.117 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:16:46.118 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/docs has finished in 18 ms
+28-Aug-2017 17:16:46.118 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/examples
+28-Aug-2017 17:16:46.505 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:16:46.530 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/examples has finished in 412 ms
+28-Aug-2017 17:16:46.530 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/host-manager
+28-Aug-2017 17:16:46.550 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:16:46.552 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/host-manager has finished in 22 ms
+28-Aug-2017 17:16:46.552 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/manager
+28-Aug-2017 17:16:46.572 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:16:46.573 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/manager has finished in 21 ms
+28-Aug-2017 17:16:46.573 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/ROOT
+28-Aug-2017 17:16:46.584 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:16:46.585 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/ROOT has finished in 12 ms
+28-Aug-2017 17:16:46.588 WARNING [main] org.apache.catalina.mapper.MapperListener.findDefaultHost Unknown default host [localhost1] for service [StandardService[Catalina]]
+28-Aug-2017 17:16:46.589 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:16:46.591 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:16:46.591 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:16:46.592 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2160 ms
+28-Aug-2017 17:17:33.071 WARNING [catalina-exec-6] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/encycbrit/rest/eb/class/4144] in DispatcherServlet with name 'rest'
+28-Aug-2017 17:17:39.502 WARNING [catalina-exec-7] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/encycbrit/rest/eb/class/4144] in DispatcherServlet with name 'rest'
+28-Aug-2017 17:17:50.952 WARNING [catalina-exec-12] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/encycbrit/rest/eb/class/4144] in DispatcherServlet with name 'rest'
+28-Aug-2017 17:19:21.414 WARNING [catalina-exec-18] org.springframework.web.servlet.PageNotFound.noHandlerFound No mapping found for HTTP request with URI [/encycbrit/rest/eb/class/4144] in DispatcherServlet with name 'rest'
+28-Aug-2017 17:39:49.980 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+28-Aug-2017 17:39:49.981 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:39:49.984 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:39:50.037 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:39:50.088 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+28-Aug-2017 17:39:50.096 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 17:16:45 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:39:50.098 INFO [localhost-startStop-2] org.springframework.web.context.support.XmlWebApplicationContext.doClose Closing Root WebApplicationContext: startup date [Mon Aug 28 17:16:45 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:39:50.109 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:39:50.111 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:39:50.111 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:39:50.112 INFO [main] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [net.greg.examples.CatalinaExecutor@48fa0f47] after stop() had already been called. The second call will be ignored.
+28-Aug-2017 17:39:50.112 SEVERE [main] org.apache.catalina.startup.Catalina.stop Catalina.stop
+ org.apache.catalina.LifecycleException: Failed to stop component [StandardServer[8005]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.startup.Catalina.stop(Catalina.java:698)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:660)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:351)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:485)
+Caused by: org.apache.catalina.LifecycleException: Failed to stop component [StandardService[Catalina]]
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:236)
+	at org.apache.catalina.core.StandardServer.stopInternal(StandardServer.java:790)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 8 more
+Caused by: org.apache.catalina.LifecycleException: An invalid Lifecycle transition was attempted ([after_stop]) for component [net.greg.examples.CatalinaExecutor@48fa0f47] in state [STOPPING_PREP]
+	at org.apache.catalina.util.LifecycleBase.invalidTransition(LifecycleBase.java:409)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:249)
+	at org.apache.catalina.core.StandardService.stopInternal(StandardService.java:533)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:232)
+	... 10 more
+
+28-Aug-2017 17:39:56.539 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.28
+28-Aug-2017 17:39:56.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Oct 7 2015 18:25:21 UTC
+28-Aug-2017 17:39:56.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.0.28.0
+28-Aug-2017 17:39:56.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+28-Aug-2017 17:39:56.540 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.11.6
+28-Aug-2017 17:39:56.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+28-Aug-2017 17:39:56.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/jre
+28-Aug-2017 17:39:56.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_92-b14
+28-Aug-2017 17:39:56.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+28-Aug-2017 17:39:56.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /opt/catalinaOne
+28-Aug-2017 17:39:56.541 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /opt/catalinaOne
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/opt/catalinaOne/conf/logging.properties
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xms4096m
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Xmx4096m
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.endorsed.dirs=/opt/catalinaOne/endorsed
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/opt/catalinaOne
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/opt/catalinaOne
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/opt/catalinaOne/temp
+28-Aug-2017 17:39:56.542 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/greg/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+28-Aug-2017 17:39:56.657 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:39:56.681 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 17:39:56.683 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:39:57.178 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 17:39:57.178 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:39:57.180 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+28-Aug-2017 17:39:57.180 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 925 ms
+28-Aug-2017 17:39:57.195 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+28-Aug-2017 17:39:57.195 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.0.28
+28-Aug-2017 17:39:57.220 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /opt/catalinaOne/webapps/encycbrit.war
+28-Aug-2017 17:39:57.962 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:39:57.995 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization started
+28-Aug-2017 17:39:58.062 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing Root WebApplicationContext: startup date [Mon Aug 28 17:39:58 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:39:58.097 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 17:39:58.577 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 17:39:58.578 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 17:39:58.579 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 17:39:58.681 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 17:39:58 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:39:58.712 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Mon Aug 28 17:39:58 CDT 2017]; root of context hierarchy
+28-Aug-2017 17:39:58.760 INFO [localhost-startStop-1] org.springframework.web.context.ContextLoader.initWebApplicationContext Root WebApplicationContext: initialization completed in 765 ms
+28-Aug-2017 17:39:58.775 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization started
+28-Aug-2017 17:39:58.778 INFO [localhost-startStop-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh Refreshing WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 17:39:58 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:39:58.778 INFO [localhost-startStop-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions Loading XML bean definitions from ServletContext resource [/WEB-INF/rest-servlet.xml]
+28-Aug-2017 17:39:58.821 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/topic/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseOneTopicIDs(java.lang.String)
+28-Aug-2017 17:39:58.821 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/class/class-name/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseTwoTopicByClassname(java.lang.String)
+28-Aug-2017 17:39:58.822 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.register Mapped "{[/eb/all/{resource}],methods=[GET]}" onto public java.lang.String com.encycbrit.rest.webservice.StrategyWebservice.useCaseThreeEntireFile(java.lang.String)
+28-Aug-2017 17:39:58.832 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 17:39:58 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:39:58.839 INFO [localhost-startStop-1] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache Looking for @ControllerAdvice: WebApplicationContext for namespace 'rest-servlet': startup date [Mon Aug 28 17:39:58 CDT 2017]; parent: Root WebApplicationContext
+28-Aug-2017 17:39:58.877 INFO [localhost-startStop-1] org.springframework.web.servlet.DispatcherServlet.initServletBean FrameworkServlet 'rest': initialization completed in 102 ms
+28-Aug-2017 17:39:58.887 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /opt/catalinaOne/webapps/encycbrit.war has finished in 1,666 ms
+28-Aug-2017 17:39:58.887 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/docs
+28-Aug-2017 17:39:58.900 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:39:58.901 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/docs has finished in 14 ms
+28-Aug-2017 17:39:58.901 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/examples
+28-Aug-2017 17:39:59.011 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:39:59.036 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/examples has finished in 135 ms
+28-Aug-2017 17:39:59.036 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/host-manager
+28-Aug-2017 17:39:59.052 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:39:59.054 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/host-manager has finished in 18 ms
+28-Aug-2017 17:39:59.054 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/manager
+28-Aug-2017 17:39:59.068 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:39:59.069 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/manager has finished in 15 ms
+28-Aug-2017 17:39:59.069 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory /opt/catalinaOne/webapps/ROOT
+28-Aug-2017 17:39:59.077 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+28-Aug-2017 17:39:59.078 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory /opt/catalinaOne/webapps/ROOT has finished in 9 ms
+28-Aug-2017 17:39:59.081 WARNING [main] org.apache.catalina.mapper.MapperListener.findDefaultHost Unknown default host [localhost1] for service [StandardService[Catalina]]
+28-Aug-2017 17:39:59.083 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8088"]
+28-Aug-2017 17:39:59.084 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8443"]
+28-Aug-2017 17:39:59.085 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+28-Aug-2017 17:39:59.085 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1904 ms

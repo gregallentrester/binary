@@ -1,0 +1,72 @@
+
+
+
+
+A. Custom ThreadPool
+
+The custom ThreadPool class that is referenced in the canonical server.xml 
+file is intended to monitor async behavior within the Catalina container.
+
+
+The server.xml file is located in the usual place: 
+
+   ../apache-tomcat-8.0.15/conf/server.xml 
+
+
+The custom ThreadPool class is named CatalinaExecutor; it extends StandardThreadExecutor.
+Its specialization consists of lifecycle callback/publication methods, which monitor async 
+behavior on behalf of the Catalina container.
+
+ 
+The CatalinaExecutor.java class is built in a separate project; its delivered to the 
+Tomcat/Catalina container in a JAR named CatalinaExecutor.jar, which should be installed 
+here:
+
+   ../apache-tomcat-8.0.15/lib/CatalinaExecutor.jar
+
+
+The CatalinaExecutor.java class is referenced in the server.xml file, via this calibration 
+construct, the canonical <Executor> element:
+
+   <Executor className="net.greg.examples.CatalinaExecutor"
+      ....
+   />
+
+            ... ... ...
+
+
+
+B. The webapps.jar 
+
+The webapps.jar is an extract of the contents of the original canonical folder:
+
+    ../apache-tomcat-8.0.15/webapps folder  
+
+
+It is provisional; meant for those days when nothing is going as planned, and
+you have deleted everything in the ../apache-tomcat-8.0.15/webapps folder.
+ 
+
+The webapps.jar file is located here:
+
+   ../apache-tomcat-8.0.15/GregsNotes/Artifacts/webapps.jar
+
+
+            ... ... ...
+
+
+
+C.  Structure of this Help  Facility
+
+
+GregsNotes  tree
+.
+|____Artifacts
+| |____webapps.jar
+|____Notes
+| |____Help.txt
+| |____Readme.txt
+| |____SecurityManager.txt
+|____Scripts
+
+GregsNotes

@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+  <!--
+       Sundry Topics
+
+          - WebSockets
+            ../apache-tomcat-7.0.50/webapps/docs/web-socket-howto.html#Tomcat_WebSocket_specific_configuration
+
+          - General Confguration
+          - https://www.mulesoft.com/tcat/tomcat-configuration
+  -->
+
+
+<!--
+     The 'port' attribute specifies which port Tomcat listens to for shutdown commands. 
+     The 'shutdown' attribute defines the command string to be listened for on the specified port to trigger a shutdown.
+     The 'className' attribute specifies which Java class implementation should be used.
+
+     See more at: https://www.mulesoft.com/tcat/tomcat-configuration#sthash.wfm3fjVH.dpuf
+-->
+
+<Server port="8005" shutdown="SHUTDOWN">
+  
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  
+  
+  <!-- 
+       Security listener.  Documentation at /docs/config/listeners.html 
+  -->
+  <!-- Listener className="org.apache.catalina.security.SecurityListener" /-->
+  
+  
+  <!--
+       APR library loader.  Documentation at /docs/apr.html 
+  -->
+  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+  
+
+  <!-- 
+       Prevent memory leaks due to use of particularly inept
+       use of java/javax APIs (Spring/Hibernate, etc) 
+  -->
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+
+  
+  <!-- 
+       Global JNDI resources.  Documentation at /docs/jndi-resources-howto.html
+  -->
+  
+  <GlobalNamingResources>
+
+    <!-- 
+         Editable user database that can also be used 
+         by UserDatabaseRealm to authenticate users
+    -->
+    <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
+
+
+    <!-- 
+         DHCP-enabled Oracle resource, calibrated for a theoretical optimal performance. 
+         Characteristics will have to be modiifed to suit dynamic traffic patterns.
+     -->
+
+
+<!--
+    <Resource name="jdbc/DESBED1" auth="Container"
+              type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              driverClassName="oracle.jdbc.driver.OracleDriver"
+              url="jdbc:oracle:thin:@//bdvdelxpps02.ingdedev.com:1575/DESBED1"
+              username="X_SBE"
+              password="devsbe_15"
+              testWhileIdle="false"
+              testOnBorrow="false"
+              testOnReturn="false"
+              initialSize="10"
+              removeAbandonedTimeout="60"
+              removeAbandoned="false"
+              logAbandoned="false"
+              minEvictableIdleTimeMillis="30000"
+              maxActive="30"
+              maxIdle="20"
+              minIdle="10"
+              maxWait="10000"
+              jmxEnabled="false" />
+-->
+
+
+    <!-- NOTES: The DBCP Connection Pool attributes cited above.   
+
+         maxTotal:  Maximum number of database connections in pool.  Make sure that 
+         you configure your Oracle connectons specification to be  large enough to 
+         handle all of your DB connections.  Set to -1 for no limit (never do that).
+        
+         maxIdle:  Maximum number of idle database connections to retain in pool.
+         Set to -1 for no limit (never do that).  See also the DBCP documentation
+         on this topic and on the 'minEvictableIdleTimeMillis' configuration parameter.
+         
+
+       Possible nomenclature changes for Tomcat/Catalina 8:
+
+          - The 'maxActive' configuration option may have been renamed to 'maxTotal'
+       
+          - The 'maxWait' configuration option may have been renamed to 'maxWaitMillis'
+
+          - The 'minWait' configuration option may have been renamed to 'minWaitMillis'
+   -->
+
+  </GlobalNamingResources>
+
+ 
+   <!-- 
+        A "Service" is a collection of one or more "Connectors" that share a
+        single "Container".  Note:  A "Service" is not itself a "Container"
+        so you may not define subcomponents such as "Valves" at this level.
+   -->
+  <Service name="Catalina">
+
+    <!--
+         Executors:
+
+         The className attribute, if specified, must implement the
+         org.apache.catalina.Executor interface.
+
+         This interface ensures that the object can be referenced
+         through its name attribute and that implements Lifecycle,
+         so that it can be started and stopped with the container.
+
+         The default value for the className is:
+
+            org.apache.catalina.core.StandardThreadExecutor
+
+         Our specialization is:
+            
+            net.greg.examples.CatalinaExecutor
+
+
+        Connectors can share an Executor; however, you can define
+        many named ThreadPools.
+    -->
+   
+    <!-- 
+         This calibration leverages a custom Executor class,
+         CatalinaExecutor, instead of the stock CatalinaThreadPool.
+    -->
+    <Executor className="net.greg.examples.CatalinaExecutor"
+              name="CatalinaThreadPool" 
+              namePrefix="catalina-exec-"
+              maxThreads="150"
+              maxIdleTime="1000"
+              minSpareThreads="25"
+              maxQueueSize="500000"
+              threadPriority="5" />
+  
+    <!--
+         Connectors:
+
+         A Connector is an endpoint by which requests
+         are received and responses are returned.
+
+         ref:
+           - Java HTTP Connector: /docs/config/http.html (blocking & non-blocking)
+           - Java AJP  Connector: /docs/config/ajp.html
+           - APR (HTTP/AJP) Connector: /docs/apr.html
+           - Define a non-SSL HTTP/1.1 Connector on port 8088
+    -->
+
+
+     <!--
+          This calibration leverages a custom Executor class,
+          CatalinaExecutor, instead of the stock CatalinaThreadPool.
+    -->
+    <Connector executor="CatalinaThreadPool" 
+               port="8088"
+               protocol="org.apache.coyote.http11.Http11NioProtocol" 
+               redirectPort="8443"
+               connectionTimeout="20000"
+               keepAliveTimeout="19000" />
+   
+    
+    <!--
+         Define a SSL HTTP/1.1 Connector on port 8443.
+
+         This connector uses the NIO implementation which requires the JSSE
+         style configuration.  When using the APR/native implementation, the
+         OpenSSL style configuration is required, as described in the
+         APR/native documentation.
+         This Connector utilizes the shared thread pool.
+    -->
+    <Connector executor="CatalinaThreadPool"
+               port="8443" 
+               protocol="org.apache.coyote.http11.Http11NioProtocol"
+               scheme="https"
+               secure="true"
+               SSLEnabled="true"
+               keystoreFile="${user.home}/keystore"
+               keystorePass="changeit"
+               clientAuth="false"
+               sslProtocol="TLS"/>
+    
+
+    <!-- 
+         Define an AJP 1.3 Connector on port 8009 
+    -->
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+
+
+     <!--
+          Engine:
+
+          An Engine is the entry point (within Catalina) that
+          processes every request.  The Engine implementation
+          for Tomcat stand-alone analyzes the HTTP headers
+          included with the request, and forwards them to the
+          appropriate Host (virtual host).
+
+          ref:   ../docs/config/engine.html
+
+          Alternatively, set the 'jvmRoute' like this if you
+          want to support load-balancing via AJP:
+    -->
+    <!--
+    <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
+    -->
+
+
+    <Engine name="Catalina" defaultHost="localhost1">
+
+      <!--
+           Cluster:
+
+           ref:   ../docs/cluster-howto.html
+                  ../docs/config/cluster.html
+      -->
+      
+      <!-- Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/ -->
+
+
+      <!--
+           The LockOutRealm prevents attempts to guess
+           Users' passwords via a brute-force attack
+      -->
+      <!-- Realm className="org.apache.catalina.realm.LockOutRealm"/ -->
+
+
+      <!--
+           This Realm uses the UserDatabase configured in the global JNDI
+           resources under the key "UserDatabase".  Any edits which are
+           performed against this UserDatabase are immediately available
+           for use by the Realm.
+      -->
+      <!-- Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+                 resourceName="UserDatabase"/ -->
+
+
+      <!--
+           The 'deployXML' attribute can be set to a value of 'false'
+           to disable parsing the 'context.xml' file, which is embedded
+           inside of the application (/META-INF/context.xml).
+
+           This in turn, will prevent applications from interacting with
+           the container's configuration.
+
+           However, the web site administrator then becomes responsible
+           for providing an external (eponymously-named) context configuration
+           file, and for placing it in this relative location:
+
+              ../conf/[enginename]/[hostname]/
+
+           ...which effectively resolves to:
+
+              ../conf/Catalina/localhost/
+
+           NOTE:   This attribute's value defaults to [true].
+
+                   ref:  http://tomcat.apache.org/tomcat-8.0-doc/config/host.html
+      -->
+      
+      <Host name="localhost"
+            appBase="webapps"
+            unpackWARs="true"
+            autoDeploy="false"
+            deployXML="true">
+
+        <!--
+             SingleSignOn valve shares authentication between web apps
+
+             ref:   ../docs/config/valve.html
+        -->
+
+        <!-- Valve className="org.apache.catalina.authenticator.SingleSignOn" / -->
+
+
+        <!--
+             Access log processes all example.
+        -->
+        <Valve className="org.apache.catalina.valves.AccessLogValve"
+               directory="logs"
+               prefix="localhost_access_log."
+               suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
+      </Host>
+    </Engine>
+  </Service>
+</Server>
