@@ -1,0 +1,40 @@
+#!/bin/bash
+
+clear
+
+args=("$@")
+ELEMENTS=${#args[@]}
+
+echo
+echo  Incoming ARG Count:  ${#args[@]}
+echo
+echo $@
+echo
+echo    ...
+
+export currant=$PWD
+
+cd /Users/greg/stage/catalinaOne/bin/
+./shutdown.sh > /dev/null 2>&1
+
+
+cd /Users/greg/stage/catalinaOne/webapps/
+rm -fr encycbrit*
+rm -fr encycbrit.war
+
+cd /Users/greg/stage/catalinaOne/work/Catalina/localhost/
+rm -fr encycbrit*
+
+
+cd ~/stage/encycbrit/
+mvn -B clean install
+
+cd  $currant/target
+cp encycbrit.war  /Users/greg/stage/catalinaOne/webapps/
+
+sleep 3
+
+cd  /Users/greg/stage/catalinaOne/bin
+./startup.sh > /dev/null 2>&1
+
+cd  $currant
