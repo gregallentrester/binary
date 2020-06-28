@@ -1,0 +1,23 @@
+#!/bin/bash
+
+clear
+
+RED='\033[0;31m'
+GRN='\033[0;32m'
+NC='\033[0m'
+
+
+export TwelveFactorKEE="AlXy7LO1Nyxxp5GAVYe2MEusk8chXJb/q0rnT5hxOsB6"
+
+
+echo;echo;echo
+echo "ßash Script as Docker Container Proxy - "
+echo "Value of the 12-Factor App Key..."
+printf "${GRN}$(printenv TwelveFactorKEE)${NC}\n"
+echo "           ...  ...  ...";echo
+
+
+printf "\n${GRN}The ConsulAccessor App ßegins ßelow ... ${NC}\n"
+echo "           ...  ...  ...";echo;echo;echo;echo
+
+java -jar target/consulaccessor.jar "TwelveFactorKEE"

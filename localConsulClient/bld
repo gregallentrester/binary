@@ -1,0 +1,39 @@
+#!/bin/bash
+
+clear
+
+RED='\033[0;31m'
+GRN='\033[0;32m'
+NC='\033[0m'
+
+
+args=("$@")
+ELEMENTS=${#args[@]}
+
+echo
+echo
+echo  Incoming ARG Count:  ${#args[@]}
+echo
+echo "$@"
+echo
+echo    ...
+
+
+mvn clean install -B -DskipTests
+# ~OR~ mvn clean install -B -Dmaven.test.skip=true
+
+
+if [ "$?" == 0 ];then
+  printf "\n\n${GRN}ßuild Ok${NC} \n\n"
+else
+  printf "\n\n${RED}FAIL${NC} \n\n"
+fi
+
+
+# my pecadillo
+rm dependency-reduced-pom.xml
+
+
+
+BASEDIR=`dirname $0`
+echo "4fun, BASEDIR --> ${BASEDIR} <--";echo;echo
