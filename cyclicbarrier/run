@@ -1,0 +1,9 @@
+#!/bin/bash -p
+
+caption "12-Factor App - Externalize Config"
+
+export WATCH_FACTOR=$1
+
+java -jar ./target/watcher.jar
+
+echo WATCH_FACTOR $WATCH_FACTOR

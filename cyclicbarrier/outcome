@@ -1,0 +1,15 @@
+#!/bin/bash -p
+
+if [ $1 != 0 ];then
+
+  clear; echo;printf "${RED}ßuild Fail${NC}";echo;echo
+  cat maven.log
+  echo;printf "${RED}ABOVE: MAVEN.LOG${NC}";echo
+
+  return
+fi
+
+rm MAVEN.LOG
+echo; printf "${GRN}ßuild Ok${NC}"; echo
+
+run $2

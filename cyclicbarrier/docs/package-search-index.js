@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"net.greg.examples.salient"},{"l":"net.greg.examples.salient.antipatterns"}]

@@ -1,0 +1,9 @@
+#!/bin/bash -p
+
+rm MAVEN.LOG
+
+PID=$(lsof -ti tcp:8080)
+
+if [[ $PID ]]; then
+  echo;echo "killing " $PID; kill -9 $PID  > /dev/null 2>&1
+fi

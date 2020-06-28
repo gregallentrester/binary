@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"net.greg.examples.salient","l":"Watch.BarrierLauncher"},{"p":"net.greg.examples.salient.antipatterns","l":"Chime"},{"p":"net.greg.examples.salient","l":"Watch.ChimeAssailant"},{"p":"net.greg.examples.salient","l":"Watch"}]

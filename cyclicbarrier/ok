@@ -1,0 +1,17 @@
+#!/bin/bash -p
+
+clear
+export PROMPT_COMMAND='echo -ne "\033]0;  $(ipconfig getifaddr en0) - bld  \007"'
+
+prep
+
+mvn clean install -B -q -DskipTests=true > MAVEN.LOG
+
+
+FACTOR=5
+
+if [ "$1" ];then
+  FACTOR=$1
+fi
+
+outcome $? $FACTOR
