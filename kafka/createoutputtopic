@@ -1,0 +1,35 @@
+#!/bin/bash -p
+
+. ztopix
+
+while IFS=' ' read -r line || [[ -n "$line" ]]; do
+
+  if [[ $line == *"$1"* ]]; then
+
+    clear;echo;echo "             ...  ...  ...";echo
+    printf "\nTopic ${GRN} $line ${NC} already exists\n\n"
+    echo "             ...  ...  ...";echo
+    break
+
+  else
+
+    bin/kafka-topics.sh \
+    --create \
+    --bootstrap-server localhost:9092 \
+    --replication-factor 1 \
+    --partitions 1 \
+    --topic $1 \
+    --config cleanup.policy=compact
+
+  fi
+
+done < topix
+
+
+bin/kafka-topics.sh \
+--bootstrap-server localhost:9092 \
+--describe
+
+echo;echo "             ...  ...  ...";echo
+
+. ztopix

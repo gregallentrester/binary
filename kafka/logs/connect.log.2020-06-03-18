@@ -1,0 +1,958 @@
+[2020-06-03 18:37:06,677] INFO Kafka Connect standalone worker initializing ... (org.apache.kafka.connect.cli.ConnectStandalone:69)
+[2020-06-03 18:37:06,692] INFO WorkerInfo values: 
+	jvm.args = -Xms256M, -Xmx2G, -XX:+UseG1GC, -XX:MaxGCPauseMillis=20, -XX:InitiatingHeapOccupancyPercent=35, -XX:+ExplicitGCInvokesConcurrent, -XX:MaxInlineLevel=15, -Djava.awt.headless=true, -Dcom.sun.management.jmxremote, -Dcom.sun.management.jmxremote.authenticate=false, -Dcom.sun.management.jmxremote.ssl=false, -Dkafka.logs.dir=/Users/greg/stage/kafka/bin/../logs, -Dlog4j.configuration=file:bin/../config/connect-log4j.properties
+	jvm.spec = AdoptOpenJDK, OpenJDK 64-Bit Server VM, 11.0.4, 11.0.4+11
+	jvm.classpath = /Users/greg/stage/kafka/bin/../libs/activation-1.1.1.jar:/Users/greg/stage/kafka/bin/../libs/aopalliance-repackaged-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/argparse4j-0.7.0.jar:/Users/greg/stage/kafka/bin/../libs/audience-annotations-0.5.0.jar:/Users/greg/stage/kafka/bin/../libs/commons-cli-1.4.jar:/Users/greg/stage/kafka/bin/../libs/commons-lang3-3.8.1.jar:/Users/greg/stage/kafka/bin/../libs/connect-api-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/connect-basic-auth-extension-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/connect-file-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/connect-json-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/connect-mirror-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/connect-mirror-client-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/connect-runtime-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/connect-transforms-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/hk2-api-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/hk2-locator-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/hk2-utils-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/jackson-annotations-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-core-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-databind-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-dataformat-csv-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-datatype-jdk8-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-jaxrs-base-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-jaxrs-json-provider-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-module-jaxb-annotations-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-module-paranamer-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jackson-module-scala_2.12-2.10.2.jar:/Users/greg/stage/kafka/bin/../libs/jakarta.activation-api-1.2.1.jar:/Users/greg/stage/kafka/bin/../libs/jakarta.annotation-api-1.3.4.jar:/Users/greg/stage/kafka/bin/../libs/jakarta.inject-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/jakarta.ws.rs-api-2.1.5.jar:/Users/greg/stage/kafka/bin/../libs/jakarta.xml.bind-api-2.3.2.jar:/Users/greg/stage/kafka/bin/../libs/javassist-3.22.0-CR2.jar:/Users/greg/stage/kafka/bin/../libs/javassist-3.26.0-GA.jar:/Users/greg/stage/kafka/bin/../libs/javax.servlet-api-3.1.0.jar:/Users/greg/stage/kafka/bin/../libs/javax.ws.rs-api-2.1.1.jar:/Users/greg/stage/kafka/bin/../libs/jaxb-api-2.3.0.jar:/Users/greg/stage/kafka/bin/../libs/jersey-client-2.28.jar:/Users/greg/stage/kafka/bin/../libs/jersey-common-2.28.jar:/Users/greg/stage/kafka/bin/../libs/jersey-container-servlet-2.28.jar:/Users/greg/stage/kafka/bin/../libs/jersey-container-servlet-core-2.28.jar:/Users/greg/stage/kafka/bin/../libs/jersey-hk2-2.28.jar:/Users/greg/stage/kafka/bin/../libs/jersey-media-jaxb-2.28.jar:/Users/greg/stage/kafka/bin/../libs/jersey-server-2.28.jar:/Users/greg/stage/kafka/bin/../libs/jetty-client-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-continuation-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-http-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-io-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-security-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-server-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-servlet-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-servlets-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jetty-util-9.4.24.v20191120.jar:/Users/greg/stage/kafka/bin/../libs/jopt-simple-5.0.4.jar:/Users/greg/stage/kafka/bin/../libs/kafka-clients-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/kafka-log4j-appender-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/kafka-streams-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/kafka-streams-examples-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/kafka-streams-scala_2.12-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/kafka-streams-test-utils-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/kafka-tools-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/kafka_2.12-2.5.0-sources.jar:/Users/greg/stage/kafka/bin/../libs/kafka_2.12-2.5.0.jar:/Users/greg/stage/kafka/bin/../libs/log4j-1.2.17.jar:/Users/greg/stage/kafka/bin/../libs/lz4-java-1.7.1.jar:/Users/greg/stage/kafka/bin/../libs/maven-artifact-3.6.3.jar:/Users/greg/stage/kafka/bin/../libs/metrics-core-2.2.0.jar:/Users/greg/stage/kafka/bin/../libs/netty-buffer-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/netty-codec-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/netty-common-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/netty-handler-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/netty-resolver-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/netty-transport-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/netty-transport-native-epoll-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/netty-transport-native-unix-common-4.1.45.Final.jar:/Users/greg/stage/kafka/bin/../libs/osgi-resource-locator-1.0.1.jar:/Users/greg/stage/kafka/bin/../libs/paranamer-2.8.jar:/Users/greg/stage/kafka/bin/../libs/plexus-utils-3.2.1.jar:/Users/greg/stage/kafka/bin/../libs/reflections-0.9.12.jar:/Users/greg/stage/kafka/bin/../libs/rocksdbjni-5.18.3.jar:/Users/greg/stage/kafka/bin/../libs/scala-collection-compat_2.12-2.1.3.jar:/Users/greg/stage/kafka/bin/../libs/scala-java8-compat_2.12-0.9.0.jar:/Users/greg/stage/kafka/bin/../libs/scala-library-2.12.10.jar:/Users/greg/stage/kafka/bin/../libs/scala-logging_2.12-3.9.2.jar:/Users/greg/stage/kafka/bin/../libs/scala-reflect-2.12.10.jar:/Users/greg/stage/kafka/bin/../libs/slf4j-api-1.7.30.jar:/Users/greg/stage/kafka/bin/../libs/slf4j-log4j12-1.7.30.jar:/Users/greg/stage/kafka/bin/../libs/snappy-java-1.1.7.3.jar:/Users/greg/stage/kafka/bin/../libs/validation-api-2.0.1.Final.jar:/Users/greg/stage/kafka/bin/../libs/zookeeper-3.5.7.jar:/Users/greg/stage/kafka/bin/../libs/zookeeper-jute-3.5.7.jar:/Users/greg/stage/kafka/bin/../libs/zstd-jni-1.4.4-7.jar
+	os.spec = Mac OS X, x86_64, 10.15.5
+	os.vcpus = 8
+ (org.apache.kafka.connect.runtime.WorkerInfo:71)
+[2020-06-03 18:37:06,698] INFO Scanning for plugin classes. This might take a moment ... (org.apache.kafka.connect.cli.ConnectStandalone:78)
+[2020-06-03 18:37:07,808] INFO Registered loader: jdk.internal.loader.ClassLoaders$AppClassLoader@2c13da15 (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:262)
+[2020-06-03 18:37:07,809] INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,810] INFO Added plugin 'org.apache.kafka.connect.file.FileStreamSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,810] INFO Added plugin 'org.apache.kafka.connect.tools.SchemaSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,810] INFO Added plugin 'org.apache.kafka.connect.tools.MockSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,810] INFO Added plugin 'org.apache.kafka.connect.file.FileStreamSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,811] INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorCheckpointConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,811] INFO Added plugin 'org.apache.kafka.connect.tools.VerifiableSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,811] INFO Added plugin 'org.apache.kafka.connect.tools.VerifiableSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,811] INFO Added plugin 'org.apache.kafka.connect.tools.MockSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,812] INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorHeartbeatConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,812] INFO Added plugin 'org.apache.kafka.connect.tools.MockConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,812] INFO Added plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,813] INFO Added plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,814] INFO Added plugin 'org.apache.kafka.connect.converters.ByteArrayConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,814] INFO Added plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,814] INFO Added plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,814] INFO Added plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,815] INFO Added plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,815] INFO Added plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,815] INFO Added plugin 'org.apache.kafka.connect.storage.SimpleHeaderConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,815] INFO Added plugin 'org.apache.kafka.connect.transforms.ReplaceField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,816] INFO Added plugin 'org.apache.kafka.connect.transforms.SetSchemaMetadata$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,816] INFO Added plugin 'org.apache.kafka.connect.transforms.ReplaceField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,816] INFO Added plugin 'org.apache.kafka.connect.transforms.InsertField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,816] INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampConverter$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,816] INFO Added plugin 'org.apache.kafka.connect.transforms.MaskField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,816] INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,817] INFO Added plugin 'org.apache.kafka.connect.transforms.RegexRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,817] INFO Added plugin 'org.apache.kafka.connect.transforms.HoistField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,817] INFO Added plugin 'org.apache.kafka.connect.transforms.ValueToKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,817] INFO Added plugin 'org.apache.kafka.connect.transforms.MaskField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,817] INFO Added plugin 'org.apache.kafka.connect.transforms.Cast$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,817] INFO Added plugin 'org.apache.kafka.connect.transforms.Cast$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,818] INFO Added plugin 'org.apache.kafka.connect.transforms.ExtractField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,818] INFO Added plugin 'org.apache.kafka.connect.transforms.Flatten$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,818] INFO Added plugin 'org.apache.kafka.connect.transforms.InsertField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,818] INFO Added plugin 'org.apache.kafka.connect.transforms.Flatten$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,818] INFO Added plugin 'org.apache.kafka.connect.transforms.SetSchemaMetadata$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,818] INFO Added plugin 'org.apache.kafka.connect.transforms.ExtractField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,818] INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampConverter$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,819] INFO Added plugin 'org.apache.kafka.connect.transforms.HoistField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,819] INFO Added plugin 'org.apache.kafka.common.config.provider.FileConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,819] INFO Added plugin 'org.apache.kafka.connect.rest.basic.auth.extension.BasicAuthSecurityRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,819] INFO Added plugin 'org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,819] INFO Added plugin 'org.apache.kafka.connect.connector.policy.PrincipalConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,819] INFO Added plugin 'org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:191)
+[2020-06-03 18:37:07,822] INFO Added aliases 'FileStreamSinkConnector' and 'FileStreamSink' to plugin 'org.apache.kafka.connect.file.FileStreamSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,822] INFO Added aliases 'FileStreamSourceConnector' and 'FileStreamSource' to plugin 'org.apache.kafka.connect.file.FileStreamSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,824] INFO Added aliases 'MirrorCheckpointConnector' and 'MirrorCheckpoint' to plugin 'org.apache.kafka.connect.mirror.MirrorCheckpointConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,824] INFO Added aliases 'MirrorHeartbeatConnector' and 'MirrorHeartbeat' to plugin 'org.apache.kafka.connect.mirror.MirrorHeartbeatConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,824] INFO Added aliases 'MirrorSourceConnector' and 'MirrorSource' to plugin 'org.apache.kafka.connect.mirror.MirrorSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,824] INFO Added aliases 'MockConnector' and 'Mock' to plugin 'org.apache.kafka.connect.tools.MockConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,824] INFO Added aliases 'MockSinkConnector' and 'MockSink' to plugin 'org.apache.kafka.connect.tools.MockSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,824] INFO Added aliases 'MockSourceConnector' and 'MockSource' to plugin 'org.apache.kafka.connect.tools.MockSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'SchemaSourceConnector' and 'SchemaSource' to plugin 'org.apache.kafka.connect.tools.SchemaSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'VerifiableSinkConnector' and 'VerifiableSink' to plugin 'org.apache.kafka.connect.tools.VerifiableSinkConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'VerifiableSourceConnector' and 'VerifiableSource' to plugin 'org.apache.kafka.connect.tools.VerifiableSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'ByteArrayConverter' and 'ByteArray' to plugin 'org.apache.kafka.connect.converters.ByteArrayConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'DoubleConverter' and 'Double' to plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'FloatConverter' and 'Float' to plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'IntegerConverter' and 'Integer' to plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,825] INFO Added aliases 'LongConverter' and 'Long' to plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,826] INFO Added aliases 'ShortConverter' and 'Short' to plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,826] INFO Added aliases 'JsonConverter' and 'Json' to plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,826] INFO Added aliases 'StringConverter' and 'String' to plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,826] INFO Added aliases 'ByteArrayConverter' and 'ByteArray' to plugin 'org.apache.kafka.connect.converters.ByteArrayConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,826] INFO Added aliases 'DoubleConverter' and 'Double' to plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,826] INFO Added aliases 'FloatConverter' and 'Float' to plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,827] INFO Added aliases 'IntegerConverter' and 'Integer' to plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,827] INFO Added aliases 'LongConverter' and 'Long' to plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,827] INFO Added aliases 'ShortConverter' and 'Short' to plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,827] INFO Added aliases 'JsonConverter' and 'Json' to plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,828] INFO Added alias 'SimpleHeaderConverter' to plugin 'org.apache.kafka.connect.storage.SimpleHeaderConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:416)
+[2020-06-03 18:37:07,828] INFO Added aliases 'StringConverter' and 'String' to plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,828] INFO Added alias 'RegexRouter' to plugin 'org.apache.kafka.connect.transforms.RegexRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:416)
+[2020-06-03 18:37:07,829] INFO Added alias 'TimestampRouter' to plugin 'org.apache.kafka.connect.transforms.TimestampRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:416)
+[2020-06-03 18:37:07,829] INFO Added alias 'ValueToKey' to plugin 'org.apache.kafka.connect.transforms.ValueToKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:416)
+[2020-06-03 18:37:07,829] INFO Added alias 'BasicAuthSecurityRestExtension' to plugin 'org.apache.kafka.connect.rest.basic.auth.extension.BasicAuthSecurityRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:416)
+[2020-06-03 18:37:07,829] INFO Added aliases 'AllConnectorClientConfigOverridePolicy' and 'All' to plugin 'org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,829] INFO Added aliases 'NoneConnectorClientConfigOverridePolicy' and 'None' to plugin 'org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,830] INFO Added aliases 'PrincipalConnectorClientConfigOverridePolicy' and 'Principal' to plugin 'org.apache.kafka.connect.connector.policy.PrincipalConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:419)
+[2020-06-03 18:37:07,841] INFO StandaloneConfig values: 
+	access.control.allow.methods = 
+	access.control.allow.origin = 
+	admin.listeners = null
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = default
+	config.providers = []
+	connector.client.config.override.policy = None
+	header.converter = class org.apache.kafka.connect.storage.SimpleHeaderConverter
+	internal.key.converter = class org.apache.kafka.connect.json.JsonConverter
+	internal.value.converter = class org.apache.kafka.connect.json.JsonConverter
+	key.converter = class org.apache.kafka.connect.json.JsonConverter
+	listeners = null
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	offset.flush.interval.ms = 10000
+	offset.flush.timeout.ms = 5000
+	offset.storage.file.filename = /tmp/connect.offsets
+	plugin.path = null
+	rest.advertised.host.name = null
+	rest.advertised.listener = null
+	rest.advertised.port = null
+	rest.extension.classes = []
+	rest.host.name = null
+	rest.port = 8083
+	ssl.client.auth = none
+	task.shutdown.graceful.timeout.ms = 5000
+	topic.tracking.allow.reset = true
+	topic.tracking.enable = true
+	value.converter = class org.apache.kafka.connect.json.JsonConverter
+ (org.apache.kafka.connect.runtime.standalone.StandaloneConfig:347)
+[2020-06-03 18:37:07,842] INFO Creating Kafka admin client (org.apache.kafka.connect.util.ConnectUtils:43)
+[2020-06-03 18:37:07,848] INFO AdminClientConfig values: 
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = default
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+ (org.apache.kafka.clients.admin.AdminClientConfig:347)
+[2020-06-03 18:37:07,899] WARN The configuration 'offset.flush.interval.ms' was supplied but isn't a known config. (org.apache.kafka.clients.admin.AdminClientConfig:355)
+[2020-06-03 18:37:07,899] WARN The configuration 'key.converter.schemas.enable' was supplied but isn't a known config. (org.apache.kafka.clients.admin.AdminClientConfig:355)
+[2020-06-03 18:37:07,899] WARN The configuration 'offset.storage.file.filename' was supplied but isn't a known config. (org.apache.kafka.clients.admin.AdminClientConfig:355)
+[2020-06-03 18:37:07,899] WARN The configuration 'value.converter.schemas.enable' was supplied but isn't a known config. (org.apache.kafka.clients.admin.AdminClientConfig:355)
+[2020-06-03 18:37:07,900] WARN The configuration 'value.converter' was supplied but isn't a known config. (org.apache.kafka.clients.admin.AdminClientConfig:355)
+[2020-06-03 18:37:07,900] WARN The configuration 'key.converter' was supplied but isn't a known config. (org.apache.kafka.clients.admin.AdminClientConfig:355)
+[2020-06-03 18:37:07,900] INFO Kafka version: 2.5.0 (org.apache.kafka.common.utils.AppInfoParser:117)
+[2020-06-03 18:37:07,900] INFO Kafka commitId: 66563e712b0b9f84 (org.apache.kafka.common.utils.AppInfoParser:118)
+[2020-06-03 18:37:07,900] INFO Kafka startTimeMs: 1591227427900 (org.apache.kafka.common.utils.AppInfoParser:119)
+[2020-06-03 18:37:08,133] INFO Kafka cluster ID: V728IKhhRX-QTmrXQVvQuA (org.apache.kafka.connect.util.ConnectUtils:59)
+[2020-06-03 18:37:08,151] INFO Logging initialized @2001ms to org.eclipse.jetty.util.log.Slf4jLog (org.eclipse.jetty.util.log:169)
+[2020-06-03 18:37:08,196] INFO Added connector for http://:8083 (org.apache.kafka.connect.runtime.rest.RestServer:131)
+[2020-06-03 18:37:08,196] INFO Initializing REST server (org.apache.kafka.connect.runtime.rest.RestServer:203)
+[2020-06-03 18:37:08,202] INFO jetty-9.4.24.v20191120; built: 2019-11-20T21:37:49.771Z; git: 363d5f2df3a8a28de40604320230664b9c793c16; jvm 11.0.4+11 (org.eclipse.jetty.server.Server:359)
+[2020-06-03 18:37:08,231] INFO Started http_8083@100f9bbe{HTTP/1.1,[http/1.1]}{0.0.0.0:8083} (org.eclipse.jetty.server.AbstractConnector:330)
+[2020-06-03 18:37:08,231] INFO Started @2081ms (org.eclipse.jetty.server.Server:399)
+[2020-06-03 18:37:08,255] INFO Advertised URI: http://127.0.0.1:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:365)
+[2020-06-03 18:37:08,255] INFO REST server listening at http://127.0.0.1:8083/, advertising URL http://127.0.0.1:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:218)
+[2020-06-03 18:37:08,255] INFO Advertised URI: http://127.0.0.1:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:365)
+[2020-06-03 18:37:08,256] INFO REST admin endpoints at http://127.0.0.1:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:219)
+[2020-06-03 18:37:08,256] INFO Advertised URI: http://127.0.0.1:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:365)
+[2020-06-03 18:37:08,256] INFO Setting up None Policy for ConnectorClientConfigOverride. This will disallow any client configuration to be overridden (org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy:45)
+[2020-06-03 18:37:08,264] INFO Kafka version: 2.5.0 (org.apache.kafka.common.utils.AppInfoParser:117)
+[2020-06-03 18:37:08,264] INFO Kafka commitId: 66563e712b0b9f84 (org.apache.kafka.common.utils.AppInfoParser:118)
+[2020-06-03 18:37:08,264] INFO Kafka startTimeMs: 1591227428264 (org.apache.kafka.common.utils.AppInfoParser:119)
+[2020-06-03 18:37:08,366] INFO JsonConverterConfig values: 
+	converter.type = key
+	decimal.format = BASE64
+	schemas.cache.size = 1000
+	schemas.enable = false
+ (org.apache.kafka.connect.json.JsonConverterConfig:347)
+[2020-06-03 18:37:08,367] INFO JsonConverterConfig values: 
+	converter.type = value
+	decimal.format = BASE64
+	schemas.cache.size = 1000
+	schemas.enable = false
+ (org.apache.kafka.connect.json.JsonConverterConfig:347)
+[2020-06-03 18:37:08,376] INFO Kafka Connect standalone worker initialization took 1697ms (org.apache.kafka.connect.cli.ConnectStandalone:100)
+[2020-06-03 18:37:08,376] INFO Kafka Connect starting (org.apache.kafka.connect.runtime.Connect:51)
+[2020-06-03 18:37:08,377] INFO Herder starting (org.apache.kafka.connect.runtime.standalone.StandaloneHerder:93)
+[2020-06-03 18:37:08,377] INFO Worker starting (org.apache.kafka.connect.runtime.Worker:184)
+[2020-06-03 18:37:08,378] INFO Starting FileOffsetBackingStore with file /tmp/connect.offsets (org.apache.kafka.connect.storage.FileOffsetBackingStore:58)
+[2020-06-03 18:37:08,380] INFO Worker started (org.apache.kafka.connect.runtime.Worker:191)
+[2020-06-03 18:37:08,380] INFO Herder started (org.apache.kafka.connect.runtime.standalone.StandaloneHerder:95)
+[2020-06-03 18:37:08,380] INFO Initializing REST resources (org.apache.kafka.connect.runtime.rest.RestServer:223)
+[2020-06-03 18:37:08,414] INFO Adding admin resources to main listener (org.apache.kafka.connect.runtime.rest.RestServer:240)
+[2020-06-03 18:37:08,479] INFO DefaultSessionIdManager workerName=node0 (org.eclipse.jetty.server.session:333)
+[2020-06-03 18:37:08,479] INFO No SessionScavenger set, using defaults (org.eclipse.jetty.server.session:338)
+[2020-06-03 18:37:08,480] INFO node0 Scavenging every 660000ms (org.eclipse.jetty.server.session:140)
+[2020-06-03 18:37:08,952] INFO Started o.e.j.s.ServletContextHandler@2125ad3{/,null,AVAILABLE} (org.eclipse.jetty.server.handler.ContextHandler:825)
+[2020-06-03 18:37:08,952] INFO REST resources initialized; server is started and ready to handle requests (org.apache.kafka.connect.runtime.rest.RestServer:313)
+[2020-06-03 18:37:08,953] INFO Kafka Connect started (org.apache.kafka.connect.runtime.Connect:57)
+[2020-06-03 18:37:08,958] INFO AbstractConfig values: 
+ (org.apache.kafka.common.config.AbstractConfig:347)
+[2020-06-03 18:37:08,966] INFO ConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSource
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-source
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig:347)
+[2020-06-03 18:37:08,967] INFO EnrichedConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSource
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-source
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig:347)
+[2020-06-03 18:37:08,967] INFO Creating connector local-file-source of type FileStreamSource (org.apache.kafka.connect.runtime.Worker:251)
+[2020-06-03 18:37:08,970] INFO Instantiated connector local-file-source with version 2.5.0 of type class org.apache.kafka.connect.file.FileStreamSourceConnector (org.apache.kafka.connect.runtime.Worker:254)
+[2020-06-03 18:37:08,970] INFO AbstractConfig values: 
+	batch.size = 2000
+	file = test.txt
+	topic = [connect-test]
+ (org.apache.kafka.common.config.AbstractConfig:347)
+[2020-06-03 18:37:08,971] INFO Finished creating connector local-file-source (org.apache.kafka.connect.runtime.Worker:273)
+[2020-06-03 18:37:08,971] INFO SourceConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSource
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-source
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.SourceConnectorConfig:347)
+[2020-06-03 18:37:08,972] INFO EnrichedConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSource
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-source
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig:347)
+[2020-06-03 18:37:08,973] INFO Creating task local-file-source-0 (org.apache.kafka.connect.runtime.Worker:419)
+[2020-06-03 18:37:08,975] INFO ConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSource
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-source
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig:347)
+[2020-06-03 18:37:08,975] INFO EnrichedConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSource
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-source
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig:347)
+[2020-06-03 18:37:08,980] INFO TaskConfig values: 
+	task.class = class org.apache.kafka.connect.file.FileStreamSourceTask
+ (org.apache.kafka.connect.runtime.TaskConfig:347)
+[2020-06-03 18:37:08,981] INFO Instantiated task local-file-source-0 with version 2.5.0 of type org.apache.kafka.connect.file.FileStreamSourceTask (org.apache.kafka.connect.runtime.Worker:434)
+[2020-06-03 18:37:08,981] INFO JsonConverterConfig values: 
+	converter.type = key
+	decimal.format = BASE64
+	schemas.cache.size = 1000
+	schemas.enable = true
+ (org.apache.kafka.connect.json.JsonConverterConfig:347)
+[2020-06-03 18:37:08,981] INFO Set up the key converter class org.apache.kafka.connect.json.JsonConverter for task local-file-source-0 using the worker config (org.apache.kafka.connect.runtime.Worker:447)
+[2020-06-03 18:37:08,982] INFO JsonConverterConfig values: 
+	converter.type = value
+	decimal.format = BASE64
+	schemas.cache.size = 1000
+	schemas.enable = true
+ (org.apache.kafka.connect.json.JsonConverterConfig:347)
+[2020-06-03 18:37:08,982] INFO Set up the value converter class org.apache.kafka.connect.json.JsonConverter for task local-file-source-0 using the worker config (org.apache.kafka.connect.runtime.Worker:453)
+[2020-06-03 18:37:08,982] INFO Set up the header converter class org.apache.kafka.connect.storage.SimpleHeaderConverter for task local-file-source-0 using the worker config (org.apache.kafka.connect.runtime.Worker:460)
+[2020-06-03 18:37:08,986] INFO Initializing: org.apache.kafka.connect.runtime.TransformationChain{} (org.apache.kafka.connect.runtime.Worker:514)
+[2020-06-03 18:37:08,993] INFO ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = default
+	client.id = connector-producer-local-file-source-0
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 2147483647
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 0
+	max.block.ms = 9223372036854775807
+	max.in.flight.requests.per.connection = 1
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 2147483647
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+ (org.apache.kafka.clients.producer.ProducerConfig:347)
+[2020-06-03 18:37:09,017] INFO Kafka version: 2.5.0 (org.apache.kafka.common.utils.AppInfoParser:117)
+[2020-06-03 18:37:09,017] INFO Kafka commitId: 66563e712b0b9f84 (org.apache.kafka.common.utils.AppInfoParser:118)
+[2020-06-03 18:37:09,017] INFO Kafka startTimeMs: 1591227429017 (org.apache.kafka.common.utils.AppInfoParser:119)
+[2020-06-03 18:37:09,025] INFO WorkerSourceTask{id=local-file-source-0} Source task finished initialization and start (org.apache.kafka.connect.runtime.WorkerSourceTask:214)
+[2020-06-03 18:37:09,027] INFO Created connector local-file-source (org.apache.kafka.connect.cli.ConnectStandalone:112)
+[2020-06-03 18:37:09,029] INFO AbstractConfig values: 
+ (org.apache.kafka.common.config.AbstractConfig:347)
+[2020-06-03 18:37:09,029] INFO [Producer clientId=connector-producer-local-file-source-0] Cluster ID: V728IKhhRX-QTmrXQVvQuA (org.apache.kafka.clients.Metadata:280)
+[2020-06-03 18:37:09,029] INFO ConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig:347)
+[2020-06-03 18:37:09,030] INFO EnrichedConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig:347)
+[2020-06-03 18:37:09,030] INFO Creating connector local-file-sink of type FileStreamSink (org.apache.kafka.connect.runtime.Worker:251)
+[2020-06-03 18:37:09,030] INFO Instantiated connector local-file-sink with version 2.5.0 of type class org.apache.kafka.connect.file.FileStreamSinkConnector (org.apache.kafka.connect.runtime.Worker:254)
+[2020-06-03 18:37:09,030] INFO AbstractConfig values: 
+	file = test.sink.txt
+ (org.apache.kafka.common.config.AbstractConfig:347)
+[2020-06-03 18:37:09,031] INFO Finished creating connector local-file-sink (org.apache.kafka.connect.runtime.Worker:273)
+[2020-06-03 18:37:09,031] INFO SinkConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.deadletterqueue.context.headers.enable = false
+	errors.deadletterqueue.topic.name = 
+	errors.deadletterqueue.topic.replication.factor = 3
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	topics = [connect-test]
+	topics.regex = 
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.SinkConnectorConfig:347)
+[2020-06-03 18:37:09,031] INFO EnrichedConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.deadletterqueue.context.headers.enable = false
+	errors.deadletterqueue.topic.name = 
+	errors.deadletterqueue.topic.replication.factor = 3
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	topics = [connect-test]
+	topics.regex = 
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig:347)
+[2020-06-03 18:37:09,032] INFO Creating task local-file-sink-0 (org.apache.kafka.connect.runtime.Worker:419)
+[2020-06-03 18:37:09,033] INFO ConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig:347)
+[2020-06-03 18:37:09,033] INFO EnrichedConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig:347)
+[2020-06-03 18:37:09,034] INFO TaskConfig values: 
+	task.class = class org.apache.kafka.connect.file.FileStreamSinkTask
+ (org.apache.kafka.connect.runtime.TaskConfig:347)
+[2020-06-03 18:37:09,034] INFO Instantiated task local-file-sink-0 with version 2.5.0 of type org.apache.kafka.connect.file.FileStreamSinkTask (org.apache.kafka.connect.runtime.Worker:434)
+[2020-06-03 18:37:09,034] INFO JsonConverterConfig values: 
+	converter.type = key
+	decimal.format = BASE64
+	schemas.cache.size = 1000
+	schemas.enable = true
+ (org.apache.kafka.connect.json.JsonConverterConfig:347)
+[2020-06-03 18:37:09,034] INFO Set up the key converter class org.apache.kafka.connect.json.JsonConverter for task local-file-sink-0 using the worker config (org.apache.kafka.connect.runtime.Worker:447)
+[2020-06-03 18:37:09,034] INFO JsonConverterConfig values: 
+	converter.type = value
+	decimal.format = BASE64
+	schemas.cache.size = 1000
+	schemas.enable = true
+ (org.apache.kafka.connect.json.JsonConverterConfig:347)
+[2020-06-03 18:37:09,035] INFO Set up the value converter class org.apache.kafka.connect.json.JsonConverter for task local-file-sink-0 using the worker config (org.apache.kafka.connect.runtime.Worker:453)
+[2020-06-03 18:37:09,035] INFO Set up the header converter class org.apache.kafka.connect.storage.SimpleHeaderConverter for task local-file-sink-0 using the worker config (org.apache.kafka.connect.runtime.Worker:460)
+[2020-06-03 18:37:09,036] INFO Initializing: org.apache.kafka.connect.runtime.TransformationChain{} (org.apache.kafka.connect.runtime.Worker:529)
+[2020-06-03 18:37:09,036] INFO SinkConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.deadletterqueue.context.headers.enable = false
+	errors.deadletterqueue.topic.name = 
+	errors.deadletterqueue.topic.replication.factor = 3
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	topics = [connect-test]
+	topics.regex = 
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.SinkConnectorConfig:347)
+[2020-06-03 18:37:09,036] INFO EnrichedConnectorConfig values: 
+	config.action.reload = restart
+	connector.class = FileStreamSink
+	errors.deadletterqueue.context.headers.enable = false
+	errors.deadletterqueue.topic.name = 
+	errors.deadletterqueue.topic.replication.factor = 3
+	errors.log.enable = false
+	errors.log.include.messages = false
+	errors.retry.delay.max.ms = 60000
+	errors.retry.timeout = 0
+	errors.tolerance = none
+	header.converter = null
+	key.converter = null
+	name = local-file-sink
+	tasks.max = 1
+	topics = [connect-test]
+	topics.regex = 
+	transforms = []
+	value.converter = null
+ (org.apache.kafka.connect.runtime.ConnectorConfig$EnrichedConnectorConfig:347)
+[2020-06-03 18:37:09,044] INFO ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = earliest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = connector-consumer-local-file-sink-0
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = connect-local-file-sink
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+ (org.apache.kafka.clients.consumer.ConsumerConfig:347)
+[2020-06-03 18:37:09,084] WARN [Producer clientId=connector-producer-local-file-source-0] Error while fetching metadata with correlation id 3 : {connect-test=LEADER_NOT_AVAILABLE} (org.apache.kafka.clients.NetworkClient:1070)
+[2020-06-03 18:37:09,090] INFO Kafka version: 2.5.0 (org.apache.kafka.common.utils.AppInfoParser:117)
+[2020-06-03 18:37:09,090] INFO Kafka commitId: 66563e712b0b9f84 (org.apache.kafka.common.utils.AppInfoParser:118)
+[2020-06-03 18:37:09,091] INFO Kafka startTimeMs: 1591227429090 (org.apache.kafka.common.utils.AppInfoParser:119)
+[2020-06-03 18:37:09,098] INFO Created connector local-file-sink (org.apache.kafka.connect.cli.ConnectStandalone:112)
+[2020-06-03 18:37:09,101] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Subscribed to topic(s): connect-test (org.apache.kafka.clients.consumer.KafkaConsumer:974)
+[2020-06-03 18:37:09,102] INFO WorkerSinkTask{id=local-file-sink-0} Sink task finished initialization and start (org.apache.kafka.connect.runtime.WorkerSinkTask:306)
+[2020-06-03 18:37:09,123] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Cluster ID: V728IKhhRX-QTmrXQVvQuA (org.apache.kafka.clients.Metadata:280)
+[2020-06-03 18:37:09,124] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:797)
+[2020-06-03 18:37:09,127] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:552)
+[2020-06-03 18:37:09,136] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Join group failed with org.apache.kafka.common.errors.MemberIdRequiredException: The group member needs to have a valid member id before actually entering a consumer group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:455)
+[2020-06-03 18:37:09,136] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] (Re-)joining group (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:552)
+[2020-06-03 18:37:09,140] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Finished assignment for group at generation 1: {connector-consumer-local-file-sink-0-56537595-26cf-4146-a897-d2455fb3c714=Assignment(partitions=[connect-test-0])} (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:604)
+[2020-06-03 18:37:09,145] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Successfully joined group with generation 1 (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:503)
+[2020-06-03 18:37:09,149] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Adding newly assigned partitions: connect-test-0 (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:273)
+[2020-06-03 18:37:09,160] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Found no committed offset for partition connect-test-0 (org.apache.kafka.clients.consumer.internals.ConsumerCoordinator:1299)
+[2020-06-03 18:37:09,173] INFO [Consumer clientId=connector-consumer-local-file-sink-0, groupId=connect-local-file-sink] Resetting offset for partition connect-test-0 to offset 0. (org.apache.kafka.clients.consumer.internals.SubscriptionState:383)
+[2020-06-03 18:37:19,025] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:37:19,025] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:37:19,034] INFO WorkerSourceTask{id=local-file-source-0} Finished commitOffsets successfully in 9 ms (org.apache.kafka.connect.runtime.WorkerSourceTask:523)
+[2020-06-03 18:37:19,095] INFO WorkerSinkTask{id=local-file-sink-0} Committing offsets asynchronously using sequence number 1: {connect-test-0=OffsetAndMetadata{offset=1, leaderEpoch=null, metadata=''}} (org.apache.kafka.connect.runtime.WorkerSinkTask:349)
+[2020-06-03 18:37:29,035] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:37:29,035] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:37:39,037] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:37:39,038] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:37:49,039] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:37:49,040] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:37:59,041] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:37:59,041] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:38:09,044] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:38:09,045] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:38:19,045] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:38:19,046] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:38:29,048] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:38:29,048] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:38:39,049] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:38:39,049] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:38:49,049] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:38:49,049] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:38:59,049] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:38:59,050] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:39:09,050] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:39:09,050] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:39:19,050] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:39:19,050] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:39:29,050] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:39:29,051] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:39:39,053] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:39:39,053] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:39:39,057] INFO WorkerSourceTask{id=local-file-source-0} Finished commitOffsets successfully in 4 ms (org.apache.kafka.connect.runtime.WorkerSourceTask:523)
+[2020-06-03 18:39:39,122] INFO WorkerSinkTask{id=local-file-sink-0} Committing offsets asynchronously using sequence number 15: {connect-test-0=OffsetAndMetadata{offset=2, leaderEpoch=null, metadata=''}} (org.apache.kafka.connect.runtime.WorkerSinkTask:349)
+[2020-06-03 18:39:49,059] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:39:49,059] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:39:59,059] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:39:59,060] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:39:59,061] INFO WorkerSourceTask{id=local-file-source-0} Finished commitOffsets successfully in 1 ms (org.apache.kafka.connect.runtime.WorkerSourceTask:523)
+[2020-06-03 18:39:59,128] INFO WorkerSinkTask{id=local-file-sink-0} Committing offsets asynchronously using sequence number 17: {connect-test-0=OffsetAndMetadata{offset=3, leaderEpoch=null, metadata=''}} (org.apache.kafka.connect.runtime.WorkerSinkTask:349)
+[2020-06-03 18:40:09,063] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:40:09,063] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:40:19,064] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:40:19,064] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:40:29,066] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:40:29,067] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:40:39,068] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:40:39,068] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:40:49,070] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:40:49,070] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:40:59,073] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:40:59,074] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:41:09,075] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:41:09,075] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:41:19,076] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:41:19,077] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:41:29,079] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:41:29,079] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:41:39,083] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:41:39,084] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:41:49,087] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:41:49,088] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:41:59,090] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:41:59,091] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:42:09,094] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:42:09,095] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:42:19,095] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:42:19,096] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:42:29,097] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:42:29,098] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:42:39,099] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:42:39,099] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:42:49,103] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:42:49,104] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:42:59,104] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:42:59,104] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:43:09,105] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:43:09,105] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:43:19,107] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:43:19,107] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:43:29,107] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:43:29,108] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:43:39,111] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:43:39,112] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:43:49,113] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:43:49,113] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:43:59,115] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:43:59,115] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:44:09,117] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:44:09,117] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:44:19,118] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:44:19,119] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:44:29,120] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:44:29,120] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:44:39,123] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:44:39,123] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:44:49,127] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:44:49,127] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:44:59,127] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:44:59,127] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:45:09,129] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:45:09,129] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:45:19,132] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:45:19,132] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:45:29,133] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:45:29,133] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:45:39,135] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:45:39,135] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:45:49,139] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:45:49,139] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:45:59,141] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:45:59,141] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:46:09,142] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:46:09,142] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:46:19,144] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:46:19,144] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:46:29,145] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:46:29,145] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:46:39,146] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:46:39,146] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:46:49,151] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:46:49,151] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:46:59,153] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:46:59,153] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:47:09,154] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:47:09,155] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:47:19,155] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:47:19,155] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:47:29,155] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:47:29,156] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:47:39,157] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:47:39,157] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:47:49,158] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:47:49,158] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:47:59,159] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:47:59,159] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:48:09,160] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:48:09,160] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:48:19,162] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:48:19,162] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:48:29,163] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:48:29,163] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:48:39,166] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:48:39,167] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:48:49,169] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:48:49,169] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:48:59,170] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:48:59,170] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:49:09,171] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:49:09,171] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:49:19,171] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:49:19,172] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:49:29,174] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:49:29,174] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:49:39,175] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:49:39,175] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:49:49,177] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:49:49,177] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:49:59,177] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:49:59,178] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:50:09,178] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:50:09,178] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:50:19,179] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:50:19,179] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:50:29,180] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:50:29,180] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:50:39,181] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:50:39,181] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:50:49,181] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:50:49,181] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:50:59,186] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:50:59,186] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:51:09,187] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:51:09,187] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:51:19,187] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:51:19,187] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:51:29,187] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:51:29,188] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:51:39,188] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:51:39,188] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:51:49,191] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:51:49,192] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:51:59,192] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:51:59,192] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:52:09,195] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:52:09,195] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:52:19,198] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:52:19,199] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:52:29,201] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:52:29,202] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:52:39,203] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:52:39,204] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:52:49,205] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:52:49,205] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:52:59,207] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:52:59,207] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:53:09,208] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:53:09,208] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:53:19,209] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:53:19,209] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:53:29,213] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:53:29,213] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:53:39,217] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:53:39,217] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:53:49,217] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:53:49,217] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:53:59,219] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:53:59,219] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:54:09,220] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:54:09,220] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:54:19,221] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:54:19,221] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:54:29,221] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:54:29,221] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:54:39,226] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:54:39,226] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:54:49,227] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:54:49,227] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:54:59,232] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:54:59,232] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:55:09,234] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:55:09,234] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:55:19,240] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:55:19,241] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:55:29,248] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:55:29,248] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:55:39,250] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:55:39,250] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:55:49,253] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:55:49,254] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:55:59,260] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:55:59,260] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:56:09,262] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:56:09,263] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:56:19,272] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:56:19,273] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:56:29,279] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:56:29,280] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:56:39,282] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:56:39,282] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:56:49,284] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:56:49,284] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:56:59,290] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:56:59,290] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:57:09,299] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:57:09,299] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:57:19,302] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:57:19,302] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:57:29,305] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:57:29,305] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:57:39,307] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:57:39,308] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:57:49,317] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:57:49,318] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:57:59,321] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:57:59,321] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:58:09,325] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:58:09,325] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:58:19,332] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:58:19,333] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:58:29,336] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:58:29,336] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:58:39,342] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:58:39,342] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:58:49,350] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:58:49,351] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:58:59,352] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:58:59,352] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:59:09,354] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:59:09,355] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:59:19,364] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:59:19,364] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:59:29,364] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:59:29,364] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:59:39,368] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:59:39,369] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:59:49,377] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:59:49,377] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)
+[2020-06-03 18:59:59,384] INFO WorkerSourceTask{id=local-file-source-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:424)
+[2020-06-03 18:59:59,385] INFO WorkerSourceTask{id=local-file-source-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:441)

@@ -1,0 +1,14 @@
+#!/bin/bash -p
+
+caption "Topics Registered w/ Zk"
+
+bin/kafka-topics.sh --list --zookeeper localhost:2181 > topix
+
+
+clear;echo;echo "Extant Topics";echo
+
+while IFS=' ' read -r line || [[ -n "$line" ]]; do
+  printf " ${GRN} $line ${NC}\n"
+done < topix
+
+echo;echo "        ...  ...  ...";echo

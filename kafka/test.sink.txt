@@ -1,0 +1,7 @@
+foo
+bar
+Another line
+DT 2020
+Wed May 27 21:29:42 CDT 2020
+date
+Wed Jun 3 18:39:55 CDT 2020
