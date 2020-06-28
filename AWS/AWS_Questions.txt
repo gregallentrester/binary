@@ -1,0 +1,631 @@
+AWS QUESTIONS
+
+
+^^^
+
+Section: General
+
+Regions
+  Availability Zones
+    Datacenters
+
+
+1. Availability Zones -
+discrete data centers with redundant power, networking,
+connectivity; used to deploy infrastructure
+
+2. Three pricing fundamentals -
+Compute, Storage, Data-out
+
+3. IAM encompasses all Regions.
+
+4. Cloud computing -
+On-demand data storage, computing power (no direct user mgmt)
+
+5. Shared Responsibility Model -
+Distribution of responsibilities for security
+
+6. Hybrid Cloud -
+benefit from the Public Cloud but keep
+sensitive assets in own infrastructure.
+
+7. AWS Acceptable Use Policy includes -
+Gaming, backups, deploy website
+
+
+_____________________________________________
+
+Section:  IAM
+
+8. IAM -
+Identity Access Management
+Users can be in multiple Groups
+  Permissions (whitelists, least privilege)
+    are enforced via:
+      JSON Policy { effect, action, resource }
+        Tags - logical names, don't affect AWS operation
+
+Permissions looks like:
+
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "*",
+      "Resource": "*"
+      }
+    ]
+  }
+
+
+9. Creating one user as Admin
+     Creates a credentials.csv file, which contains:
+
+     User name,Password,Access key ID,Secret access key,Console login link
+     gregallentrester,,,,https://083750808030.signin.aws.amazon.com/console
+
+     A logged-in root user identifier does not include the @ sign.
+
+
+10. Password Policy (template)
+MFA (Multi-Factor Authentication) (2FA, OAuth2)
+
+(3) MFA Options:
+a. Hardware FOB (RSA FOB)
+
+b. Virtual, e.g.
+     Google Authenticator (phone only, uses QR Codes)
+     Authy (multi-device)
+
+c. Physical, e.g.
+     Universal 2nd Factor Key (U2F)
+     YubiKey)
+
+
+11. Three ways to access AWS
+a. Console
+b. CLI needs access keys, via console
+c. SDK needs access keys, via console
+
+
+12. CLI
+ARN - Amazon Resource Name
+
+Access keys -
+Console process creates an accessKeys.csv
+Creds used w/ this CLI command:
+
+  aws configure (challenge-response)
+  aws iam list-users
+
+    {
+      "Users": [
+        {
+          "Path": "/",
+          "UserName": "gregallentrester",
+          "UserId": "AIDARG77P5HPPZKAERFOB",
+          "Arn": "arn:aws:iam::083750808030:user/gregallentrester",
+          "CreateDate": "2020-06-13T23:00:00+00:00"
+        },
+        {
+          "Path": "/",
+          "UserName": "serverless",
+          "UserId": "AIDARG77P5HPOYN5AFTWD",
+          "Arn": "arn:aws:iam::083750808030:user/serverless",
+          "CreateDate": "2020-06-04T06:09:16+00:00"
+        }
+      ]
+    }
+
+
+13 IAM Roles
+Used by AWS Services, like EC2
+Role name cannot have spaces: DemoRoleforEC2
+
+
+14. IAM Reports
+Two (2) Types of Tools:
+   - IAM Credentials Report (account-level)
+   - IAM Access Advisor (account-level)
+       last used service permissions, by user
+       used to revise policies
+
+
+15. IAM - Shared Responsibility Model
+User responsiblity:
+  Roles,Groups,Policies.Permissions
+  MFA
+  Key rotation
+
+
+16. Quiz
+
+    Roles - assigns permissions to AWS services, which
+    allows them to perform actions on your behalf
+
+    Two (2) IAM Security Tools -
+      a.  IAM Credentials report -
+          Lists account's users, credentials.
+
+      b.  IAM Access Advisor -
+          Shows user's service permissions, usage.
+
+    Root account used to:
+      - Create your first IAM user
+      - Account and service management
+
+    Policies -
+    Entity attached to an identity/resource
+    to define their permissions.
+
+
+_____________________________________________
+
+Section:  EC2  (a virtual machine)
+
+Elastic Cloud Compute (IaaS)
+Seven (7) Factors -
+
+  1. OS - Linux, Windows (no Mac)
+  2. CPU
+  3. RAM
+  4. Storage (2 types)-
+       - Network-attached (EBS,EFS)
+         EBS ephemeral
+       - Hardware (EC2 Instance Store)
+  5. Network card - speed, Public IP Address
+  6. Firewall Rules - security group
+  7. Bootstrap script - EC2 User Data (config at first launch)
+
+
+17. EC2 Types (are 100's):
+      specified as: family.specific:
+
+      - t2.micro    (EBS) ephemeral
+      - t2.xlarge   (EBS) ephemeral
+      - c5d.4xlarge
+      - r5.16xlarge (EBS) ephemeral
+      - m5.8xlarge  (EBS) ephemeral
+
+
+18. Choose an Amazon Machine Image (AMI)
+
+      A. Choose this Amazon Machine Image (AMI):
+
+           Amazon Linux 2 AMI (HVM), SSD Volume Type
+
+      B. Bootstrap script (below) installs a web server on EC2,
+         but is not used when creating/cloning a
+         custom Amazon Machine Image (AMI)
+
+      #!/bin/bash
+      yum update  -y
+      yum install -y httpd
+      systemctl start httpd
+      systemctl enable httpd
+      echo "<h4> Hello from $(hostname -f)</h4>" > /var/www/html/index.html
+
+      C. 'Add Storage' button (accept defaults)
+
+      D. 'Add Tags' button
+
+      E. 'Confirm Security Group' button
+         In Menu : 'Step 6: Configure Security Group'
+
+         SSH is already there, but add another:
+           Type == HTTP, Protocol == TCP, port == 80
+
+         'Review and Launch' button
+
+         Key Pair drop down options:
+           'Choose existing Key Pair'
+           'Create new Key Pair'
+
+      F. PEM File (must NOT be publically accessible location on localhost)
+
+           No matter the location of the PEM file:
+
+              chmod 400 FirstEC2Key.pem
+              ssh -i "FirstEC2Key.pem" ec2-18-188-68-227.us-east-2.compute.amazonaws.com
+
+      G. Launch
+
+          Config:
+            Public DNS (IPv4)
+            ec2-3-16-55-237.us-east-2.compute.amazonaws.com
+
+            IPV4 Public IP:
+            3.16.55.237
+
+            Private DNS:
+            ip-172-31-28-92.us-east-2.compute.internal
+
+            Private IPs:
+            172.31.28.92
+
+
+          To launch, paste in browser:
+
+              3.16.55.237
+
+
+          Browser shows:
+          Hello from ip-172-31-28-92.us-east-2.compute.internal (displays Private IP)
+
+          If browser access fails (maybe due to reusing the PEM?):
+
+            A. Click the 'Connect' on this page:
+                 Dashboard:
+                 https://uss-east-2.console.aws.amazon.com/ec2/v2/home?region=us-east-2#Instances:sort=tag:Name
+
+            B. Displays (directions that are specific to your situation).
+
+                Connection method: (dropdown options)
+                  - A standalone SSH client (yes)
+                  - Session Manager
+                  - EC2 Instance Connect
+                      (browser-based connection to a SSH terminal  )
+
+                To access your instance:
+
+                1. Open an SSH client.
+
+                2. Locate your private key file (FirstEC2Key.pem).
+                    Wizard automatically detects the key you used to launch
+                  the instance.
+
+                3. Your key must not be publicly viewable for SSH to work.
+                   wUse this command if needed:
+
+                      chmod 400 FirstEC2Key.pem
+
+                4. Connect to your instance using its Public DNS:
+
+                      ec2-18-188-68-227.us-east-2.compute.amazonaws.com
+
+                   Example:
+
+                    ssh -i "FirstEC2Key.pem" ec2-18-188-68-227.us-east-2.compute.amazonaws.com
+
+                   Upon login, if you see:
+
+                     0644 - "Permissions are too open"
+
+
+SSH Troubleshooting
+
+1) Connection Timeout
+This is a security group issue.
+Any timeout (not just for SSH) is related to security groups or a firewall.
+Ensure your security group looks like this and correctly assigned to your
+EC2 instance.
+
+If your security group is properly configured as above, and you still have
+connection timeout issues, then that means a corporate/personal firewall is
+blocking the connection.
+Please use EC2 Instance Connectas described in the next lecture.
+
+2) Connection Refused
+The instance is reachable, but no SSH utility is running on the instance.
+Try to restart the instance.
+If it doesn't work, terminate the instance and create a new one.
+Make sure you're using Amazon Linux 2.
+
+3)  Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
+This means either two things:
+  - You are using the wrong security key or not using a security key.
+  - Please look at your EC2 instance configuration to make sure you
+    have assigned the correct key to it.
+
+You are using the wrong user.  Make sure you have started an Amazon Linux 2
+EC2 instance, and make sure you're using the user ec2-user.
+This is something you specify when doing ec2-user@<public-ip>
+(ex: ec2-user@35.180.242.162) in your SSH command or your Putty configuration
+
+4) Able to connect yesterday, can't today.
+This is probably because you have stopped your EC2 instance and
+then started it again today.  When you do so, the public IP of your
+EC2 instance changes.
+Therefore, in your command edit/save the new public IP.
+
+
+19. Ports
+    21    FTP     File Transport Protocol
+
+    22    SSH     Secure Shell  Protocol
+    22    SFTP    Secure File Transport Protocol
+    22    RDP     Remote Desktop Protocol (Windows)
+    3389  RDP     Remote Desktop Protocol (Windows)
+
+    80    HTTP    Access unsecure websites
+    443   HTTPS   Access secure websites
+
+    Port Wildcards:
+      IPV 4
+      0.0.0.0/0
+
+      IPV 6
+      ::/0
+
+      CIDR is an IP range
+      Security Groups can be shared among instances
+
+
+20. SSH Summary Table:
+
+            SSH     puTTY    EC2 Instance Connect
+Mac         Y                 Y
+Linux       Y                 Y
+Win < 10              Y       Y
+Win 10      Y         Y       Y
+
+
+
+21. Roles within the EC2 Instance.
+
+    Prompt will mention EC2
+
+    1.  Roles (when using CLI)
+
+        If you run:
+
+          aws iam list-users
+
+        You should see:
+          {
+            "Users": [
+              {
+                "UserName": "gregallentrester",
+                "Path": "/",
+                "CreateDate": "2020-06-13T23:00:00Z",
+                "UserId": "AIDARG77P5HPPZKAERFOB",
+                "Arn": "arn:aws:iam::083750808030:user/gregallentrester"
+              },
+              {
+                "UserName": "serverless",
+                "Path": "/",
+                "CreateDate": "2020-06-04T06:09:16Z",
+                "UserId": "AIDARG77P5HPOYN5AFTWD",
+                "Arn": "arn:aws:iam::083750808030:user/serverless"
+              }
+            ]
+          }
+
+        When you get this response:
+
+          'Unable to locate credentials.
+            You can configure credentials
+              by running "aws configure".
+
+        Never run 'aws config' - it is a backdoor for
+        others to see the creds you must supply.
+
+        Instead modify Roles (Dashboard).
+
+          Right-click Instance -->
+            Instance Settings -->
+              Attach Replace IAM Role
+
+
+
+22. Purchasing Options (5 Types)
+    Server-bound Software Licenses - meet compliance and costs.
+
+    1.  On-Demand - pay/per/use
+
+    2.  Reserved - 3 types, 1 OR 3 years (weird), 75% discount, no/partial/all upfront)
+          Reserved - long workloads
+          Convertible Reserved - long, flexible workloads 54% discount
+          Scheduled Reserved - periodic, fixed intervals
+
+    3.  Spot - short,cheap,unreliable (lose all if max price < spot price)
+
+    4.  Dedicated Instance - book entire host, control placement (3 year)
+
+    5.  Dedicated Host - book entire host, control placement (3 year)
+
+
+    _____________________________________________
+
+
+23. EBS Volume (Elastic Block Store) ephemeral
+      USB-like network drive, survives instance shutdown.
+      Many per Availability Zone, but cannot cross Availability Zones, unless you do a snapshot.
+
+
+24. Creating Custom Amazon Machine Image (AMI)
+    For the image you want to copy/clone:
+
+      a.  Right-click,
+            Image --> Create Image
+
+      b.  Instances (right menu option) -->
+            'Launch Instance' button -->
+              Quick start (menu tab)-->
+                Choose 'My AMI' (not stock as before)
+
+      c.  Skip Linux Bootstrap script
+
+      d.  Reuse security group
+
+      e.  Reuse security Key Pair
+
+
+25. EC2 Instance Store
+    EBS Volume (Elastic Block Store ephemeral (can lose data)
+    Good for:  buffer, cache, scratch, temporary
+
+Delete Instances, Volumes, Snapshots, AMIs.
+
+
+Q1. Amazon EFS - creates a shared network file system that
+    is fully-managed for scalabilty, cost-optimization.
+
+    Instance Store - temporary, block-level storage (non-network file system)
+    EBS Snapshots - backup of your EBS volume (non-network file system)
+
+Q2. AMI's IP addresses are assigned to an instance as you create it
+
+Q3  An EBS Volume CANNOT be attached to multiple EC2 Instances.
+    One EC2 Instances can have multiple EBS Volumes.
+
+Q4. An EBS Volume - network drive you can allows instances' data to
+    persist after termination.
+
+Q5. EC2 Instance Store has a better I/O performance, but data is lost if: the EC2 instance is stopped or terminated, or when the underlying disk drive fails.
+
+Q6  AWS Marketplace - where to find a third party's AMI.
+
+Q7. An EBS Volume is tied to an Availability Zone.
+    [ Region, Datacenter, Edge location, Availability Zone ]
+
+    _____________________________________________
+
+
+26. High Availability
+
+    Scalability v Elasticity (distractor == Agility)
+
+    Scalability -
+      (stronger nodes == scale up, more nodes == scale out)
+
+    Elasticity - auto-scaling
+
+    Elastic Load Balancer (ELB) - a SERVICE that provides
+                            a single point of access (DNS)
+
+    There are three kinds of ALBs/ELBs:
+
+      Layer 7 - Application LB (HTTP/HTTPS only)
+      Layer 4 - Network LB - (ultra high-performance, TCP allowed)
+      Classic LB - (retiring) Layer 4 & 7 combined
+
+      Target Groups - specifies routing
+
+      Add LBs to Registered Target via 'add to registered' button
+
+      DNS Name - commmon to any/all LBs
+
+
+27. Auto-scaling Group (ASG)
+    Scale-in, Scale-Out
+    Left-side menu: AUTO SCALING --> Auto Scaling Groups
+
+    Min size
+    Actual size (desired capacity)
+    Max size
+
+    When an instance terminates/fails a replacement is created.s
+
+Q1. HA - survivability.
+
+Q2. Network Load Balancer (Layer 4) handles hundreds of thousands
+    of connections with low latency?
+
+      [ Elastic LB, Application LB (type 7), Network LB(type 4) ]
+
+      Elastic Load Balancer is the name of the service,
+      not a type of Load Balancer.
+
+      Application Load Balancer - Layer 7, handles HTTP and HTTPS traffic
+      provides advanced request routing, targets modern architectures
+      (microservices/containers).
+
+Q3.   Vetical scaling - changing EC2 Instance Type from t3a.medium to t3a.2xlarge.
+
+        Choices: [ HA, Agility, Horizontal, Vertical ]
+
+      Horizontal scaling - increasing the number of instances/systems for your app.
+
+Q4.   Auto Scaling Group (ASG) - quickly/automatically change load on
+      websites/apps by adding compute resources.
+
+Q5.   Auto Scaling Groups can add or remove instances, but from the same type.
+      They cannot change the EC2 Instances Types on the fly.
+
+
+Q6.    Application Load Balancer - best suited for HTTP/HTTPS load balancing traffic?
+
+        ChoicesL [ Classic Lb, Elastic LB, Application LB (type 7), Network LB (type 4)]
+
+Q7.   Auto Scaling Groups (ASG) - offers the capacity to scale-out, scale-in
+                                  adding/removing instances.
+
+Q8.   Load Balancers - health checks, spread load downstream, handle downstream fails.
+                       Cannot do back-end autoscaling.
+
+                       _____________________________________________
+
+28. S3 Infinitely-scaling Storage
+
+    Use Cases:
+      Backup/Archive
+      Disaster Recovery
+      Hybrid Cloud storage
+      Application hosting
+      Media hosting/static website
+      DataLakes/Big Data analytics
+      Software delivery
+
+
+29. Objects (are files)
+    Buckets (are directories, must be unique across accounts/regions)
+    Buckets defined at Region
+      Naming Conventions:
+        - lowercase
+        - no underscores
+        - 3-63 char limit
+        - not an IP
+        - starts w/ letter or number
+
+      Objects (files) have a Key (5TB capacity) or multi-part upload
+      Key is FULL path = Prefix + Objectname
+
+      Bucket + Prefix + Objectname
+      s3://bucket/ + folderPrefix/ + FileObject.txt
+
+      Objects (files) can have:
+        Metadata
+        Tags
+        Version ID (if enabled)
+
+30. To get to the S3 Console/Dashboard:
+
+        Click: Orange Services link, choose S3
+
+        After creation, Click 'Upload' button, choose a file.
+
+        Inaccessible (intially) when you click on this link:
+
+        Object URL
+        https://gregallentrester.s3.us-east-2.amazonaws.com/AWS_Questions.txt
+
+31. S3 Security
+
+    1. User based
+        IAM policies (which API calls are allowed)
+
+    2. Resouce based
+        Bucket policies (allows cross-account)
+        Object Access Control List (ACL)
+        Bucket Access Control List (ACL)
+
+    3. Encryption (keys)
+
+
+32. QQQ
+
+
+33. QQQ
+
+
+34. QQQ
+
+
+35. QQQ
+
+
+26. QQQ
+
+
+36. QQQ
