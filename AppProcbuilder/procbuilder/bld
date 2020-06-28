@@ -1,0 +1,27 @@
+#!/bin/bash
+
+clear
+
+args=("$@")
+ELEMENTS=${#args[@]}
+
+echo
+echo
+echo  Incoming ARG Count:  ${#args[@]}
+echo
+echo "$@"
+echo
+echo    ...
+
+sleep 1
+
+
+mvn clean install -B -DskipTests
+mvn clean install -B -Dmaven.test.skip=true
+
+rm dependency-reduced-pom.xml
+
+
+BASEDIR=`dirname $0`
+echo;echo "BASEDIR  ${BASEDIR}";echo;echo
+

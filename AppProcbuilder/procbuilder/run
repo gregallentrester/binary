@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export PROMPT_COMMAND='echo -ne "\033]0;  $(ipconfig getifaddr en0) - Vault Secrets, via Process ßuilder   \007"'
+
+clear
+
+java -jar target/salient.jar -B
