@@ -1,0 +1,8 @@
+#!/bin/bash -p
+
+clear
+cp ./SHUTTLE/SITE/pom.xml .
+
+mvn clean site:site -B
+
+open ./target/site/index.html 

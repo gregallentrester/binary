@@ -1,0 +1,6 @@
+#!/bin/bash -p
+
+clear
+cp ./SHUTTLE/REG/pom.xml .
+
+mvn clean install -B -q

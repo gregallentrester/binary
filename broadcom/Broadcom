@@ -1,0 +1,54 @@
+ref: https://www.weather.gov/documentation/services-web-api
+
+How do I get the forecast?
+Forecasts are divided into 2.5km grids. Each NWS office is responsible for a
+section of the grid. The API endpoint for the forecast at a specific grid is:
+
+https://api.weather.gov/gridpoints/{office}/{grid X},{grid Y}/forecast
+For example: https://api.weather.gov/gridpoints/TOP/31,80/forecast
+
+If you do not know the grid that correlates to your location, you can use the
+/points endpoint to retrieve the exact grid endpoint by coordinates:
+
+https://api.weather.gov/points/{latitude},{longitude}
+For example: https://api.weather.gov/points/39.7456,-97.0892
+
+This will return the grid endpoint in the "forecast" property.
+Applications may cache the grid for a location to improve latency and reduce
+the additional lookup request. This endpoint also tells the application
+where to find information for issuing office, observation stations, and zones.
+
+^^^
+
+Points API
+https://api.weather.gov/points/{latitude},{longitude}
+
+Forecast API
+https://api.weather.gov/gridpoints/{office}/{grid X},{grid Y}/forecast
+
+
+
+
+https://api.weather.gov/points/
+
+The Web Service guide is documented here
+
+https://www.weather.gov/documentation/services-web-api
+
+
+
+https://api.weather.gov/points/39.7456,-97.0892
+
+https://api.weather.gov/points/37.3541,-121.9552
+
+https://api.weather.gov/gridpoints/TOP/31,80/forecast
+
+
+^^^
+
+Token:
+iUvBDbNaVZwgZEbszepHEdjZSCYExfth
+
+
+curl https://www.ncdc.noaa.gov/cdo-web/api/v2/locations \
+-H "Token: iUvBDbNaVZwgZEbszepHEdjZSCYExfth"
