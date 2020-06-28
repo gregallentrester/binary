@@ -1,0 +1,246 @@
+ref: https://www.jenkins.io/doc/book/installing/
+
+
+Installing Jenkins in a Docker Container
+
+
+1.  Create a bridge network in Docker using the docker network create command:
+
+        docker network create jenkins
+
+    Result (as a reference):
+
+        438b156eef27c489b4968da5791321d87c61c079f002e0a467e2394f7c321674
+
+
+2.  Create volumes to share the Docker client TLS certificates - this
+    is needed to connect to the Docker daemon and to persist Jenkins
+    data using these 2 commands:
+
+      docker volume create jenkins-docker-certs
+      docker volume create jenkins-data
+
+
+3.  To execute Docker commands inside Jenkins nodes, download and to
+    run the docker:dind Docker image using this command:
+
+      docker container run --name jenkins-docker --rm --detach \
+        --privileged --network jenkins --network-alias docker \
+        --env DOCKER_TLS_CERTDIR=/certs \
+        --volume jenkins-docker-certs:/certs/client \
+        --volume jenkins-data:/var/jenkins_home \
+        --publish 2376:2376 docker:dind
+
+    Result (as a reference):
+
+      c332c8fddfa6787a1ffdfae7644eeb3fd6937ae1f00d65b1499031ade74adb5a
+
+    Legend:
+
+    --name jenkins-docker (optional)
+    Specifies the Docker container name for the running image.
+    Docker generates a unique container name by default.
+
+    --rm (optional)
+    Automatically remove the Docker container at shut down.
+    Contains the Docker image cache used by Docker when invoked
+    from the 'jenkinsci/blueocean' container, described below.
+
+    --detach (optional)
+    Run the Docker container in the background.
+    Stop instance:    docker container stop jenkins-docker
+    Start instance:  docker container start jenkins-docker
+
+    --privileged
+    Running Jenkins in Docker requires privileged access
+    to function properly - may be relaxed with newer
+    Linux kernel versions.
+
+    --network jenkins
+    Corresponds with the network created by:
+
+      docker network create jenkins
+
+    --network-alias docker
+    Makes the Docker in Docker container available as the hostname
+    docker within the jenkins network.
+
+    --env DOCKER_TLS_CERTDIR=/cert
+    Enables the use of TLS in the Docker server - recommended due to
+    the use of a privileged container.
+
+    Note:  The Cert requires the use of a shared volume (see below).
+    The 'DOCKER_TLS_CERTDIR' env var controls the root directory,
+    which is where Docker TLS certificates are managed.
+
+    -volume jenkins-docker-certs:/certs/client
+    Maps the '/certs/client' directory inside the container to a
+    Docker volume named 'jenkins-docker-certs' (see above).
+
+     --volume jenkins-data:/var/jenkins_home
+    Maps the '/var/jenkins_home' directory inside the container
+    to the Docker volume named 'jenkins-data' (see above).
+
+    Allows other Docker containers controlled by this Docker
+    Container’s Docker daemon to mount data from Jenkins.
+
+    --publish 2376:2376 (optional)
+    Exposes the Docker daemon port on the host machine.
+    Useful for executing docker commands on the host machine to
+    control this inner Docker daemon.
+
+    docker:dind
+    This image can be downloaded before running by using the command:
+
+        docker image pull docker:dind.
+
+
+4.  Download the 'jenkinsci/blueocean' image, run it as a Docker Container
+    using following command:
+
+      docker container run --name jenkins-blueocean --rm --detach \
+        --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+        --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
+        --volume jenkins-data:/var/jenkins_home \
+        --volume jenkins-docker-certs:/certs/client:ro \
+        --publish 8080:8080 --publish 50000:50000 jenkinsci/blueocean
+
+    Result (as a reference):
+
+        7337ea2c650c9455b7123b43f1c0d72c9d6f691c76bdfa043e2747605e60b8c7
+
+    Note:
+
+    The above Docker image could also be downloaded/updated using
+    this command:
+
+      docker image pull jenkinsci/blueocean
+
+    Legend:
+      --name jenkins-blueocean (optional)
+      Specify the Docker Container name for this instance of the
+      'jenkinsci/blueocean' Docker image.
+
+      Providesa reference for subsequent Docker Container commands.
+
+      --rm (optional)
+      Automatically removes the Docker Container (the isntance of
+      the 'jenkinsci/blueocean' image below) when it is shut down.
+
+      --detach (optional)
+      Run the 'jenkinsci/blueocean' container in the background,
+      detached mode; also. outputs the Container ID.
+
+      If you do not specify this option, the running Docker log
+      for this Container outputs to stdout (the terminal).
+
+      Connects this Container to the Jenkins network (see above).
+      This makes the Docker daemon available to this Jenkins
+      Container through the hostname docker.
+
+      --network jenkins
+      Docker daemon (see above) is available to this Jenkins
+      Container through the hostname docker.
+
+      --env DOCKER_HOST=tcp://docker:2376
+      Specify the env vars used by docker, docker-compose,
+      other Docker tools to connect to the Docker daemon.
+
+      --env DOCKER_CERT_PATH=/certs/client
+
+      --env DOCKER_TLS_VERIFY=1
+
+      --publish 8080:8080
+      Map port 8080 of the 'jenkinsci/blueocean' Container
+      to the host port 8080.  Format:  host port: container port.
+
+      So,  -p 49000:8080 means you are accessing Jenkins on the
+      host machine through port 49000.
+
+      --publish 50000:50000 (optional)
+      Map port 50000 of the 'jenkinsci/blueocean' Container to
+      port 50000 on the host machine.   Necessary only if you
+      have set up one/more JNLP-based Jenkins agents on other
+      machines, which in turn interact with the 'jenkinsci/blueocean'
+      Container (acting as Jenkins master).
+
+      By default, JNLP-based Jenkins agents communicate with the
+      Jenkins master through TCP port 50000.
+
+      You can change this port number on your Jenkins master through
+      the Configure Global Security page.
+
+      If you changed the value for your Jenkins master’s TCP port for
+      JNLP agents to 51000, you would need to re-run Jenkins (via this
+      docker run …​ command) and specify this "publish" option with
+      something like --publish 52000:51000, where the last value of
+      51000 is changed value on the Jenkins master, and the first
+      value of 52000 is the port number on the Jenkins master’s host
+      machine through which the JNLP-based Jenkins agents communicate
+      (to the Jenkins master).
+
+      Note:  WebSocket agents in Jenkins 2.217 don't need this config.
+
+      --volume jenkins-data:/var/jenkins_home
+      Map the ''/var/jenkins_home' directory in the container to the
+      Docker volume with the name jenkins-data.
+
+      Instead of mapping the '/var/jenkins_home' directory to a
+      Docker volume, you could map this directory to one on your
+      machine’s local file system.
+
+      --volume jenkins-docker-certs:/certs/client:ro
+      Map the '/certs/client' directory to the 'jenkins-docker-certs'
+      volume.
+
+      This makes the client TLS certificates needed to connect to the
+      Docker daemon available in the path specified by the env var:
+
+          'DOCKER_CERT_PATH'
+
+
+5.    Proceed to the Post-installation Setup Wizard (needs a password):
+
+          https://www.jenkins.io/doc/book/installing/#setup-wizard
+
+      The inital unlock/password can also serve as the default
+      admin password (username:  "admin") if you skip the user-creation
+      step in the setup wizard.
+
+      There are two ways to retrieve the auto-generated password:
+
+      A.  SSH into 'jenkins-blueocean' Container's ID
+          (e.g. containerID: 7337ea2c650c):
+
+              docker exec -it <container name> /bin/bash
+              docker exec -it 7337ea2c650c /bin/bash
+
+          In the Docker Container, the Jenkins Unlock/Passwd value
+          is written within this file (initialAdminPassword):
+
+              /var/jenkins_home/secrets/initialAdminPassword
+
+          So. Issue this pair of commands:
+
+            cd /var/jenkins_home/secrets/; cat initialAdminPassword
+
+          Example (password) result:
+
+            2f5e75c7544e453fa2450d543575f87c
+
+
+      B.  A second way to get auto-generated password:
+
+              docker inspect <containerID>
+
+      C.  For Jenkins Unlock Login Issues:
+
+              ref:  https://dockr.ly/31aA0t8
+              ref:  https://dockr.ly/2YqxsFh
+              ref:  https://dockr.ly/3hUrcNS
+
+^^^
+
+
+
+.
