@@ -1,0 +1,32 @@
+<project name="Gregs Project">
+    <bannerLeft>
+        <name>Greg</name>
+        <src>images/logo.png</src>
+        <href>http://www.sonatype.com</href>
+    </bannerLeft>
+
+    <bannerLeft>
+        <name>Left Banner</name>
+        <src>images/logo.png</src>
+        <href>http://www.google.com</href>
+    </bannerLeft>
+
+    <bannerRight>
+        <name>Right Banner</name>
+        <src>images/logo.png</src>
+        <href>http://www.yahoo.com</href>
+    </bannerRight>
+
+     <publishDate position="navigation-bottom"/>
+    <body>
+        <menu name="Greg's Project">
+            <item name="Overview" href="index.html"/>
+        </menu>
+        <menu ref="reports"/>
+    </body>
+    <poweredBy>
+      <logo name="Maven" href="http://maven.apache.org/"
+            img="http://maven.apache.org/images/logos/maven-feather.png"/>
+    </poweredBy>
+
+</project>
